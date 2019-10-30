@@ -11,10 +11,10 @@
 
 public class Two {
 
-    char start = 'A';
-    char end = 'D';
+    private char start = 'A';
+    private char end = 'D';
 
-    void printRange() {
+    public void printRange() {
         for (char i = start; i <= end; i++) {
             System.out.print(i);
         }
