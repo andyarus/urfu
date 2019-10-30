@@ -21,7 +21,7 @@ public class One {
     }
 
     public void description() {
-        System.out.printf("Character: %s (code: %s)", ch, getCode());
+        System.out.printf("Character: %c (code: %d)", ch, getCode());
     }
 
     public static void main(String[] args) {
