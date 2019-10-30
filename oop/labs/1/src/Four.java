@@ -13,21 +13,21 @@
 public class Four {
 
     private char ch;
-    private int a;
+    private int x;
 
     Four(char ch, int a) {
         this.ch = ch;
-        this.a = a;
+        this.x = a;
     }
 
     Four(double raw) {
         int decimal = (int) raw;
         ch = (char) decimal;
-        a = (int) Math.floor((raw - decimal) * 100);
+        x = (int) Math.floor((raw - decimal) * 100);
     }
 
 //    public void description(String prefix) {
-//        System.out.printf("%sch:%c a:%d\n", prefix, ch, a);
+//        System.out.printf("%sch:%c x:%d\n", prefix, ch, x);
 //    }
 
     public static void main(String[] args) {
