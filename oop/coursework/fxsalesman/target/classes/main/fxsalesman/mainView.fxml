@@ -16,7 +16,6 @@
     <Label fx:id="titleLabel" text="Выберите источник данных" />
     <Button onAction="#onOpenFileButtonClick" text="Файл" />
    <Button mnemonicParsing="false" onAction="#onRandomButtonClick" text="Рандом" />
-   <Button mnemonicParsing="false" onAction="#onManualButtonClick" text="Вручную" />
    <HBox>
       <children>
          <Label prefHeight="25.0" text="Лог" />

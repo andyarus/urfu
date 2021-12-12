@@ -3,24 +3,31 @@ package solver.brutforce;
 import java.util.Arrays;
 
 public class Solver {
-    private int citiesCount;
+    // Public Properties
     public int[][] cities;
     public int[][] citiesSortedIdx;
-    private int[] way;
-
     public int[] bestWay;
     public int bestCost;
+    public int solutionsCount;
+    public static int passValue = -1;
+
+    // Private Properties
+    private int citiesCount;
+    private int[] way;
     private int[][] bestWays;
     private int bestWaysCount;
     private int bestWaysCountMax = 100;
     private boolean[] visitedCities;
-    public int solutionsCount;
 
-    public static int passValue = -1;
-
+    // Init
     public Solver(int cityCount) {
         this.cities = new int[cityCount][cityCount];
         this.citiesSortedIdx = new int[cityCount][cityCount];
+
+        // Default value
+        for (int[] array : this.cities) {
+            Arrays.fill(array, passValue);
+        }
 
         citiesCount = cityCount;
 
@@ -38,6 +45,7 @@ public class Solver {
         solutionsCount = 0;
     }
 
+    // Public Methods
     public void solve(int currentCityIdx, int processedCitiesCount, int cost, boolean verbose) {
         if (cost > bestCost) {
             return;
@@ -154,7 +162,7 @@ public class Solver {
         output = getPrintableCities();
         output += getPrintableBestWays();
         output += String.format("Решений:%d", solutionsCount);
-        output += String.format("\nВремя решения:%dh %dm %ds %dns", hours, minutes, seconds, resultTime);
+        output += String.format("\nВремя решения:%dh %dm %ds %dns\n\n", hours, minutes, seconds, resultTime);
         return output;
     }
 }

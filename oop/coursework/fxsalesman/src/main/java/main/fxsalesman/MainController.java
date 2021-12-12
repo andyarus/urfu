@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import solver.brutforce.FileManager;
+import solver.brutforce.Matrix;
 import solver.brutforce.Solver;
 
 import java.io.File;
@@ -43,10 +44,12 @@ public class MainController {
 
     @FXML
     protected void onRandomButtonClick() {
-    }
-
-    @FXML
-    protected void onManualButtonClick() {
+        long startTime = System.nanoTime();
+        // Solve salesman task
+        Solver solver = Matrix.random();
+        solver.solve(0, 1, 0, false);
+        String result = solver.result(startTime);
+        textArea.appendText(result);
     }
 
     @FXML
