@@ -1,9 +1,9 @@
-package solver.brutforce;
+package solver;
 
 import java.util.*;
 
 public class Matrix {
-    // Private Properties
+    // Comparator
     private static Comparator<Integer> distanceComparator = (lhs, rhs) -> {
         if (lhs.intValue() == Solver.passValue) {
             return 1;
@@ -13,7 +13,7 @@ public class Matrix {
         return lhs.compareTo(rhs);
     };
 
-    // Public Static Methods
+    // Fill solver properties with distances from citiesDistances
     public static void fill(Solver solver, List<List<Integer>> citiesDistances) {
         for (int row = 0; row < citiesDistances.size(); row++) {
             // for sorted array idx
@@ -32,6 +32,7 @@ public class Matrix {
         }
     }
 
+    // Generate random data with distances between cities and return Solver
     public static Solver random() {
         int size = getRandomNumber(5, 10);
         Solver solver = new Solver(size);
@@ -62,8 +63,8 @@ public class Matrix {
         return solver;
     }
 
-    // Private Static Methods
-    private static int getRandomNumber(int min, int max) {
+    // Random number generator
+    public static int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
 }

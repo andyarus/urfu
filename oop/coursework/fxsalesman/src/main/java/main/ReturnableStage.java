@@ -1,4 +1,4 @@
-package main.fxsalesman;
+package main;
 
 import javafx.stage.Stage;
 

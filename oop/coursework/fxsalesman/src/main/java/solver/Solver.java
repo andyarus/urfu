@@ -1,4 +1,4 @@
-package solver.brutforce;
+package solver;
 
 import java.util.Arrays;
 
@@ -45,7 +45,7 @@ public class Solver {
         solutionsCount = 0;
     }
 
-    // Public Methods
+    // Solve Task Method
     public void solve(int currentCityIdx, int processedCitiesCount, int cost, boolean verbose) {
         if (cost > bestCost) {
             return;
@@ -105,6 +105,7 @@ public class Solver {
         visitedCities[currentCityIdx] = false;
     }
 
+    // Get statistics by cities
     public String getPrintableCities() {
         String output = "Города:" + cities.length + "\n";
         for (int i = 0; i < cities.length; i ++) {
@@ -123,20 +124,7 @@ public class Solver {
         return output;
     }
 
-    public String getPrintableBestWay() {
-        String output = "\nЛучший путь:" + "\n";
-        for (int i = 0; i < citiesCount+1; i++) {
-            if (i == citiesCount) {
-                output += bestWay[i];
-            } else {
-                output += bestWay[i] + " -> ";
-            }
-        }
-        output += " Стоимость:" + bestCost;
-
-        return output;
-    }
-
+    // Get best ways
     public String getPrintableBestWays() {
         String output = "\nЛучшие пути:" + bestWaysCount + "\n";
         for (int i = 0; i < bestWaysCount; i++) {
@@ -153,6 +141,7 @@ public class Solver {
         return output;
     }
 
+    // Get result
     public String result(long startTime) {
         String output;
         long resultTime = System.nanoTime() - startTime;

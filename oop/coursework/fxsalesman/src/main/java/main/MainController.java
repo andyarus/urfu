@@ -1,4 +1,4 @@
-package main.fxsalesman;
+package main;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,12 +15,14 @@ import javafx.stage.*;
 import javafx.util.Callback;
 import tableCells.SpinnerCell;
 import models.CityDistanceModel;
-import solver.brutforce.FileManager;
-import solver.brutforce.Matrix;
-import solver.brutforce.Solver;
+import solver.FileManager;
+import solver.Matrix;
+import solver.Solver;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainController {
     @FXML
@@ -67,7 +70,7 @@ public class MainController {
             showAlert("Необходимо выбрать количество городов!");
             return;
         }
-        getCitiesDistances(citiesCount);
+        openCitiesDistances(citiesCount);
     }
 
     @FXML
@@ -75,7 +78,7 @@ public class MainController {
         textArea.setText("");
     }
 
-    // Private Methods
+    // Show Alert
     private void showAlert(String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Ошибка");
@@ -84,6 +87,7 @@ public class MainController {
         alert.showAndWait();
     }
 
+    // Open CitiesCountController
     private Integer openCitiesCountController() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("citiesCountView.fxml"));
@@ -103,7 +107,8 @@ public class MainController {
         }
     }
 
-    private void getCitiesDistances(Integer citiesCount) {
+    // Open Cities Distances Manual Input Scene
+    private void openCitiesDistances(Integer citiesCount) {
         CityDistanceModel[][] citiesMatrix = new CityDistanceModel[citiesCount][citiesCount+1];
         for(int x = 0; x < citiesCount; x++) {
             for (int y = 0; y < citiesCount+1; y++) {
@@ -131,15 +136,18 @@ public class MainController {
             }
         }
 
-        ObservableList<CityDistanceModel[]> dacitiesMatrixObservable = FXCollections.observableArrayList();
-        dacitiesMatrixObservable.addAll(Arrays.asList(citiesMatrix));
+        ObservableList<CityDistanceModel[]> citiesMatrixObservable = FXCollections.observableArrayList();
+        citiesMatrixObservable.addAll(Arrays.asList(citiesMatrix));
 
-        TableView<CityDistanceModel[]> tableView = new TableView<>(dacitiesMatrixObservable);
+        TableView<CityDistanceModel[]> tableView = new TableView<>(citiesMatrixObservable);
+
+        final Double cityNamesColumnWidth = 25.0;
+        final Double spinnerColumnWidth = 90.0;
 
         // Cities Row Titles
-        TableColumn<CityDistanceModel[], CityDistanceModel> tableColumn = new TableColumn<>();
-        tableColumn.setCellValueFactory(cellData -> Bindings.createObjectBinding(() -> cellData.getValue()[0]));
-        tableColumn.setCellFactory((column) -> {
+        TableColumn<CityDistanceModel[], CityDistanceModel> cityNamesColumn = new TableColumn<>();
+        cityNamesColumn.setCellValueFactory(cellData -> Bindings.createObjectBinding(() -> cellData.getValue()[0]));
+        cityNamesColumn.setCellFactory((column) -> {
             TableCell<CityDistanceModel[], CityDistanceModel> tableCell = new TableCell<CityDistanceModel[], CityDistanceModel>() {
                 @Override
                 protected void updateItem(CityDistanceModel item, boolean empty) {
@@ -153,11 +161,13 @@ public class MainController {
             };
             return tableCell;
         });
-        tableView.getColumns().add(tableColumn);
+        cityNamesColumn.prefWidthProperty().setValue(cityNamesColumnWidth);
+        cityNamesColumn.setResizable(false);
+        tableView.getColumns().add(cityNamesColumn);
 
         // Spinner Cells
         for (int i = 0; i < citiesCount; i++) {
-            String cityName = dacitiesMatrixObservable.get(i)[0].getCityName();
+            String cityName = citiesMatrixObservable.get(i)[0].getCityName();
             TableColumn<CityDistanceModel[], CityDistanceModel> spinnerColumn = new TableColumn<>(cityName);
             final int columnIndex = i+1;
             spinnerColumn.setCellValueFactory(cellData -> Bindings.createObjectBinding(() -> cellData.getValue()[columnIndex]));
@@ -167,42 +177,48 @@ public class MainController {
                     return new SpinnerCell<>();
                 }
             });
+            spinnerColumn.prefWidthProperty().setValue(spinnerColumnWidth);
+            spinnerColumn.setResizable(false);
             tableView.getColumns().add(spinnerColumn);
         }
 
         Button doneButton = new Button("Готово");
         doneButton.setOnAction((ActionEvent event) -> {
-
-            System.out.println(tableView.getItems());
-            System.out.println(tableView.getItems().size());
-            for (int i = 0; i < tableView.getItems().size(); i++) {
-                CityDistanceModel[] rowItems = tableView.getItems().get(i);
-                System.out.println("rowItems" + rowItems);
-                System.out.println("rowItems.length" + rowItems.length);
-
-                for (int x = 0; x < rowItems.length; x++) {
-                    CityDistanceModel item = rowItems[x];
+            List<List<Integer>> citiesDistances = new ArrayList<List<Integer>>();
+            Integer rowCount = tableView.getItems().size();
+            for (int x = 0; x < rowCount; x++) {
+                CityDistanceModel[] rowItems = tableView.getItems().get(x);
+                citiesDistances.add(new ArrayList<Integer>());
+                for (int y = 1; y < rowItems.length; y++) {
+                    CityDistanceModel item = rowItems[y];
                     if (item != null) {
-                        System.out.println("cityName " + item.getCityName());
-                        System.out.println("value " + item.getValue());
+                        citiesDistances.get(x).add(item.getDistance());
                     }
                 }
             }
 
-//            Stage stage = (Stage) doneButton.getScene().getWindow();
-//            stage.close();
+            // Solve salesman task
+            Solver solver = new Solver(rowCount);
+            Matrix.fill(solver, citiesDistances);
+            long startTime = System.nanoTime();
+            solver.solve(0, 1, 0, false);
+            String result = solver.result(startTime);
+            textArea.appendText(result);
+
+            Stage stage = (Stage) doneButton.getScene().getWindow();
+            stage.close();
         });
 
+        final Double sceneWidth = cityNamesColumnWidth + spinnerColumnWidth * citiesCount + 50.0;
+        final Double sceneHeight = 50.0 + 30.0 * citiesCount + 50.0;
+
         VBox vbox = new VBox(tableView, doneButton);
-        Scene scene = new Scene(vbox, 800, 700);
+        vbox.setMargin(doneButton, new Insets(10, 10, 10, sceneWidth/2 - 29.5));
+        Scene scene = new Scene(vbox, sceneWidth, sceneHeight);
         Stage stage = new Stage();
-        //ReturnableStage stage = new ReturnableStage();
         stage.initModality(Modality.APPLICATION_MODAL);
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
-        //stage.setScene(scene);
         stage.show();
     }
 }
-
-

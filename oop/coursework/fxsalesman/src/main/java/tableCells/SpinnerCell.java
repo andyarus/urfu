@@ -6,9 +6,14 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableCell;
 import models.CityDistanceModel;
-import solver.brutforce.Solver;
+import solver.Solver;
 
 public class SpinnerCell<T> extends TableCell<T, CityDistanceModel> {
+
+    // Private Properties
+    private final Integer spinnerMinValue = 10;
+    private final Integer spinnerMaxValue = 1000;
+
     @Override
     protected void updateItem(CityDistanceModel item, boolean empty) {
         super.updateItem(item, empty);
@@ -16,9 +21,9 @@ public class SpinnerCell<T> extends TableCell<T, CityDistanceModel> {
             this.setText(null);
             this.setGraphic(null);
         } else {
-            SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 1000);
+            SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(spinnerMinValue, spinnerMaxValue);
             Spinner<Integer> spinner = new Spinner<>(valueFactory);
-            Integer itemValue = item.getValue();
+            Integer itemValue = item.getDistance();
             if (itemValue == Solver.passValue) {
                 valueFactory.minProperty().setValue(itemValue);
                 valueFactory.maxProperty().setValue(itemValue);
@@ -34,7 +39,7 @@ public class SpinnerCell<T> extends TableCell<T, CityDistanceModel> {
             spinner.valueProperty().addListener((obs, oldValue, newValue) -> {
                 CityDistanceModel model = getItem();
                 if (model != null) {
-                    model.setValue(newValue);
+                    model.setDistance(newValue);
                 }
             });
         }

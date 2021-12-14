@@ -1,4 +1,4 @@
-package solver.brutforce;
+package solver;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +48,7 @@ public class FileManager {
         }
         sc.close();
 
+        // Create solver from citiesDistances
         Solver solver = new Solver(rowCount);
         Matrix.fill(solver, citiesDistances);
 
