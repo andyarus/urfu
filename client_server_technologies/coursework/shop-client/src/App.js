@@ -2,11 +2,10 @@ import React from 'react';
 import './App.css';
 import useToken from './components/Hooks/useToken';
 import Auth from './components/Auth/Auth'
-import Categories from './components/Categories/Categories'
-import Products from './components/Products/Products'
+import Authorized from './components/Authorized/Authorized'
 
 function App() {
-  const { token, setToken, removeToken } = useToken();
+  const { token, setToken } = useToken();
 
   if(!token) {
     return <Auth setToken={setToken} />
@@ -14,9 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <button className="logoutButton" onClick={removeToken}>Выход</button>
-      <Categories />
-      <Products />
+      <Authorized />
     </div>
   )
 }

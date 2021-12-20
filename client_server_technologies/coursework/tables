@@ -1,0 +1,333 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+category
+product
+administrator
+
+
+
+
+
+
+
+
+
+administrators
+id BIGINT
+name VARCHAR(255)
+email VARCHAR(255)
+phone VARCHAR(255)
+avatarUrl VARCHAR(255)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS users (
+	id serial PRIMARY KEY,
+    is_admin BOOLEAN NOT NULL,
+	username VARCHAR (50) UNIQUE NOT NULL,
+	password VARCHAR (50) NOT NULL,
+    name VARCHAR (255),
+    email VARCHAR (255),
+    avatar_url VARCHAR (2083),
+	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
+    last_login TIMESTAMP
+);
+
+INSERT INTO public.users(is_admin, username, password, name, email, avatar_url)
+VALUES (true, 'admin', 'password', 'Vasilyi Pupkin', 'vasylyipupkin@mail.ru', 'https://cdn-icons-png.flaticon.com/512/78/78948.png');
+
+
+
+select * from users();
+
+
+
+CREATE TABLE IF NOT EXISTS categories (
+	id serial PRIMARY KEY,
+    parent_category_id INT,
+	name VARCHAR (255) UNIQUE NOT NULL,
+    description TEXT,
+    icon_url VARCHAR (2083),
+    image_url VARCHAR (2083),
+	created_on TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+
+
+
+
+
+INSERT INTO categories(name) VALUES ('СНОУБОРДЫ');
+INSERT INTO categories(name) VALUES ('ГОРНЫЕ ЛЫЖИ');
+INSERT INTO categories(name) VALUES ('БЕГОВЫЕ ЛЫЖИ');
+INSERT INTO categories(name) VALUES ('ОДЕЖДА');
+INSERT INTO categories(name) VALUES ('ОБУВЬ');
+INSERT INTO categories(name) VALUES ('ОПТИКА, ШЛЕМЫ');
+INSERT INTO categories(name) VALUES ('БЕГ');
+INSERT INTO categories(name) VALUES ('РЮКЗАКИ');
+INSERT INTO categories(name) VALUES ('ТУРИЗМ');
+
+
+
+
+
+
+
+
+
+
+insert into categories
+
+
+
+
+
+is_subcategory BOOLEAN NOT NULL DEFAULT FALSE,
+subcategory_id INT,
+
+
+
+CREATE TABLE IF NOT EXISTS products (
+	id serial,
+    category_id INT NOT NULL,
+	name VARCHAR (255) NOT NULL,
+    description TEXT NOT NULL,
+    image_url VARCHAR (2083) NOT NULL,
+    price BIGINT NOT NULL,
+	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (id, category_id),
+    FOREIGN KEY (category_id)
+        REFERENCES categories (id)
+);
+
+
+
+Сноуборд BURTON Ft 3D Deep Daze 2021-22
+
+Перенесите свои впечатления от катания в пухляке в мир 3D. Работая с райдерами команды, специалисты Burton углубились в прототипы и результаты тестирования, чтобы идеально настроить форму и дизайн сноуборда Family Tree 3D Deep Daze. Вдохновленная современным дизайном досок для серфинга, уникальная трехмерная форма носа и хвоста стабилизирует езду на всем диапазоне поворота. Доска втягивает вас в каждую дугу и позволяет удерживать мощность, а затем ускоряться, обеспечивая новый уровень отдачи и контроля в глубоком снегу. Плавайте и прореживайте самые глубокие зимние дни.
+
+https://www.kant.ru/upload/resize_cache/iblock/2e3/555_455_1/2e3e00d75bd08499673cd328497afdc5.jpg
+
+shop=> select * from categories;
+ id | parent_category_id |     name      | description | icon_url | image_url |         created_on         
+----+--------------------+---------------+-------------+----------+-----------+----------------------------
+  1 |                    | СНОУБОРДЫ     |             |          |           | 2021-12-20 03:12:01.337105
+  2 |                    | ГОРНЫЕ ЛЫЖИ   |             |          |           | 2021-12-20 03:14:00.599045
+  3 |                    | БЕГОВЫЕ ЛЫЖИ  |             |          |           | 2021-12-20 03:14:00.599578
+  4 |                    | ОДЕЖДА        |             |          |           | 2021-12-20 03:14:00.599788
+  5 |                    | ОБУВЬ         |             |          |           | 2021-12-20 03:14:00.599943
+  6 |                    | ОПТИКА, ШЛЕМЫ |             |          |           | 2021-12-20 03:14:00.600107
+  7 |                    | БЕГ           |             |          |           | 2021-12-20 03:14:00.600264
+  8 |                    | РЮКЗАКИ       |             |          |           | 2021-12-20 03:14:00.600406
+  9 |                    | ТУРИЗМ        |             |          |           | 2021-12-20 03:14:00.600578
+(9 rows)
+
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (1, 'Сноуборд BURTON Ft 3D Deep Daze 2021-22', 'Перенесите свои впечатления от катания в пухляке в мир 3D. Работая с райдерами команды, специалисты Burton углубились в прототипы и результаты тестирования, чтобы идеально настроить форму и дизайн сноуборда Family Tree 3D Deep Daze. Вдохновленная современным дизайном досок для серфинга, уникальная трехмерная форма носа и хвоста стабилизирует езду на всем диапазоне поворота. Доска втягивает вас в каждую дугу и позволяет удерживать мощность, а затем ускоряться, обеспечивая новый уровень отдачи и контроля в глубоком снегу. Плавайте и прореживайте самые глубокие зимние дни.', 'https://www.kant.ru/upload/resize_cache/iblock/2e3/555_455_1/2e3e00d75bd08499673cd328497afdc5.jpg', 10000);
+
+
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (2, 'Горнолыжные палки ELAN RockRod Jr Black', 'Elan RockRod Jr - это удобные и надежные горнолыжные палки для детей. Алюминиевое древко обладает оптимальным сочетанием легкого веса, прочности и жесткости, а эргономичная рукоятка создает удобный обхват и создана для детских рук. Широкий выбор расцветок позволяет легко выбрать нужный вариант практически под любую экипировку.', 'https://www.kant.ru/upload/resize_cache/iblock/a47/555_455_1/a47547b3f4b2162819b691c152a5822f.jpg', 1100);
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (3, 'Беговые лыжи ATOMIC 2021-22 Pro C1 Skintec - Hard', 'Беговые лыжи ATOMIC Pro C1 Skintec предназначены для классического хода и отлично подходят как для тренировок, так и для соревнований. Модель не предполагает использование воска: зоны ударов выполнены из мохера и обеспечивают отличные характеристики ударов и скольжения при любых снежных условиях и температурах. Благодаря объединению конструкции SDS Camber и технологии Skintec лыжи имеют оптимальные для тренировок характеристики удара и скольжения.', 'https://www.kant.ru/upload/resize_cache/iblock/ef4/555_455_1/ef474cdf28eb8ae7311bbc2a68ebd1cd.jpg', 8000);
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (4, 'Брюки горнолыжные SALOMON The Brilliant Pant W Ebony', 'Salomon The brilliant - горнолыжные брюки, вобравшие в себя лучшие разработки Salomon. Благодаря эргономичному крою и эластичному материалу 4-Way Stretch, брюки буквально повторяют каждое ваше движение. Дышащая мембрана с показателями защитит от ветра и осадков, а утеплитель Primaloft Black Eco плотностью 60г/кв.м сохранит тепло на протяжении всего дня.', 'https://www.kant.ru/upload/resize_cache/iblock/ea1/555_455_1/ea1ce534bc49576f34f443ce44e4723b.jpeg', 5000);
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (5, 'Беговые кроссовки SALOMON Spikecross 5 Gtx Black/Racing Rd/Rd Dahlia', 'Salomon Spikecross 5 GTX - теплые кроссовки с низким верхом, агрессивным сцеплением и вольфрамовыми шипами, предназначены для зимних тренировок. К культовой модели Speedcross и добавили по всему объему GORE-TEX для защиты от неблагоприятных погодных условий и снега. Также мы использовали зимний состав Contagrip®© и 12 вольфрамовых шипов в подошве для надежного сцепления на рыхлом и плотном снегу и ледяной поверхности.', 'https://www.kant.ru/upload/resize_cache/iblock/c3e/555_455_1/c3e6ff4b9d2508f3c5055136ce6026b3.jpeg', 9787);
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (6, 'Зимний Шлем BLIZZARD 2021-22 Double Black Matt', 'Универсальный шлем Blizzard Double – это легкий и надежный шлем для катания на горных лыжах или сноуборде, какой бы склон вы не выбрали. Регулируемая система вентиляции и система регулировки размера обеспечат точную посадку и комфорт. Благодаря этому вы можете расслабиться и получать удовольствие от катания.', 'https://www.kant.ru/upload/resize_cache/iblock/cb4/555_455_1/cb4361b0ef220313e2229a70e5562ca1.JPG', 7653);
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (7, 'Рюкзак-жилет SALOMON 2021-22 Sense Pro 10 W Set Red Chili/Ebon', 'Каждая секунда на счету и комфорт и удобство имеют решающее значение. Вот почему минималистичный рюкзак для женщин Sense Pro 10 W имеет ультра-комфортный крой без точек трения. Он также оборудован нижними карманами для гидратации, адаптированными к морфологии тела. Благодаря мгновенному доступу к нужным вещам вы сможете двигаться дальше и быстрее.', 'https://www.kant.ru/upload/resize_cache/iblock/ed4/555_455_1/ed409dcf8571453f7f9216c91ebebf3a.jpg', 7685);
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (8, 'Рюкзак Bjorn Daehlie 2021-22 Backpack 13L Black', 'Рюкзак Bjorn Daehlie легкий и технологичный, отлично подходит для бега, езды на велосипеде и катания на лыжах. Прочная водостойкая ткань обеспечивает полную сохранность содержимого.', 'https://www.kant.ru/upload/resize_cache/iblock/492/555_455_1/492708982cd6572e9e452b2fb9477749.jpg', 3198);
+
+INSERT INTO products(category_id, name, description, image_url, price)
+VALUES (9, 'Alexika Indiana 4 кемпинговая палатка четырехместная', 'Одна из самых популярных туристических палаток Alexika. Ей отдают предпочтение как семьи, отправляющиеся на природу, так и молодежные компании. Площадь палатки позволяет свободно разместиться в ней вчетвером, обеспечивая комфортный отдых. ', 'https://contents.mediadecathlon.com/p1749711/k9ffdc2b29978c4d079ad0f620d315b42/palatka-arpenaz-42.jpg', 9999);
+
+
+
+
+
+
+
+/auth
+
+{
+    "username": "admin1",
+    "password": "password1"
+}
+
+return
+
+{
+    "id": 123,
+    "is_admin": true,
+    "name": "name",
+    "email": "email",
+    "avatar_url": "avatar_url"
+}
+
+/categories
+
+{
+    "id": 123,
+    "parent_category_id": 123,
+    "name": "name",
+    "description": "description",
+    "icon_url": "icon_url",
+    "image_url": "url"
+}
+
+/categories/add
+
+{
+    "id": 123,
+    "parent_category_id": null,
+    "name": "name",
+    "description": "description",
+    "icon_url": "icon_url",
+    "image_url": "url"
+}
+
+/products
+
+{
+    "id": 123,
+    "category_id": 123,
+    "name": "name",
+    "description": "description",
+    "image_url": "url"
+}
+
+/products/add
+
+{
+    "id": 123,
+    "category_id": 123,
+    "name": "name",
+    "description": "description",
+    "image_url": "url"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE public.administrators
+(
+    id serial,
+    username character varying(50)[] NOT NULL,
+    password character varying(50)[] NOT NULL,
+    name character varying(255)[],
+    email character varying(255)[],
+    avatar_url character varying(2083)[],
+    created_on timestamp with time zone NOT NULL,
+    last_login timestamp with time zone,
+    PRIMARY KEY (id),
+    CONSTRAINT administrators UNIQUE (username)
+);
+
+ALTER TABLE IF EXISTS public.administrators
+    OWNER to admin;
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE roles(
+   role_id serial PRIMARY KEY,
+   role_name VARCHAR (255) UNIQUE NOT NULL
+);
+
+CREATE TABLE account_roles (
+  user_id INT NOT NULL,
+  role_id INT NOT NULL,
+  grant_date TIMESTAMP,
+  PRIMARY KEY (user_id, role_id),
+  FOREIGN KEY (role_id)
+      REFERENCES roles (role_id),
+  FOREIGN KEY (user_id)
+      REFERENCES accounts (user_id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
