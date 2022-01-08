@@ -33,4 +33,6 @@ int main(int argc, char *argv[]) {
 	} catch (const char *e) {
 		std::cerr << "Source file parse error:" << e << std::endl;
 	}
+
+	return 0;
 }

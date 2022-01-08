@@ -2,6 +2,7 @@
 #define SOLVER_H
 #include <vector>
 using namespace std;
+
 class Solver {
     private:
         int citiesCount;
