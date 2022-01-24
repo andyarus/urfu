@@ -2,10 +2,16 @@
 
 
 
+CREATE ROLE admin WITH LOGIN PASSWORD 'EKVhWyB6vd';
+ALTER ROLE admin CREATEDB;
+
+\q
+psql postgres -U admin
 
 
 
-
+psql -U admin shop < dump.sql
+put the user password and press enter.
 
 
 
@@ -83,15 +89,16 @@ CREATE TABLE IF NOT EXISTS categories (
 
 
 
-INSERT INTO categories(name) VALUES ('СНОУБОРДЫ');
-INSERT INTO categories(name) VALUES ('ГОРНЫЕ ЛЫЖИ');
-INSERT INTO categories(name) VALUES ('БЕГОВЫЕ ЛЫЖИ');
-INSERT INTO categories(name) VALUES ('ОДЕЖДА');
-INSERT INTO categories(name) VALUES ('ОБУВЬ');
-INSERT INTO categories(name) VALUES ('ОПТИКА, ШЛЕМЫ');
-INSERT INTO categories(name) VALUES ('БЕГ');
-INSERT INTO categories(name) VALUES ('РЮКЗАКИ');
-INSERT INTO categories(name) VALUES ('ТУРИЗМ');
+INSERT INTO categories(id, name) VALUES (1, 'СНОУБОРДЫ');
+INSERT INTO categories(id, name) VALUES (2, 'ГОРНЫЕ ЛЫЖИ');
+INSERT INTO categories(id, name) VALUES (3, 'БЕГОВЫЕ ЛЫЖИ');
+INSERT INTO categories(id, name) VALUES (4, 'ОДЕЖДА');
+INSERT INTO categories(id, name) VALUES (5, 'ОБУВЬ');
+INSERT INTO categories(id, name) VALUES (6, 'ОПТИКА, ШЛЕМЫ');
+INSERT INTO categories(id, name) VALUES (7, 'БЕГ');
+INSERT INTO categories(id, name) VALUES (8, 'РЮКЗАКИ');
+INSERT INTO categories(id, name) VALUES (9, 'ТУРИЗМ');
+
 
 
 INSERT INTO categories(name, description, icon_url, image_url) VALUES
