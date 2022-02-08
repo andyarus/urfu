@@ -11,8 +11,8 @@ function Main() {
             <TopMenu />
             <AdvantageList />
             <Baner />
-            <ProductsList title={"Новинки"} />
-            <ProductsList title={"Популярные товары"} />
+            <ProductsList title={"Новинки"} className="products-list_new"/>
+            <ProductsList title={"Популярные товары"} className="products-list_popular"/>
             <Footer />
         </div>
     );

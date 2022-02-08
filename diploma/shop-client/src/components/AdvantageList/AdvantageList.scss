@@ -1,0 +1,28 @@
+.advantage-list {
+    display: flex;
+    margin: 0 120px;
+    margin-bottom: 29px;
+    justify-content: space-between;
+    &__item {
+        display: flex;
+        margin-right: 90px;
+        
+        &:last-child {
+            margin-right: 0px;
+        }
+        &_icon {
+            height: 50px;
+            width: 50px;
+            background: #5d43e1;
+
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+        &_text {
+            width: 190px;
+        }
+    }
+}

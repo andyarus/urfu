@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import './Baner.scss'
+import baner from '../../assets/sitebaner.png'
+
+import "./Baner.scss";
 
 function Baner() {
-  return <div>Baner</div>;
+    return (
+        <section className="baner">
+            <img className="baner__img" src={baner} alt="" />
+        </section>
+    );
 }
 
 export default Baner;

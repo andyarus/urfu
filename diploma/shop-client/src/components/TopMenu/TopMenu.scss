@@ -1,0 +1,122 @@
+.top-menu {
+    &__container {
+        margin: 0 120px;
+        padding: 36px 0 30px 0;
+    }
+    background: linear-gradient(180deg, #ffffff 0%, #f9f8fc 100%);
+
+    &__panel {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 36px;
+    }
+    .panel {
+        display: flex;
+
+        .search {
+            color: #8c8c8f;
+            display: flex;
+            padding: 10px 15px;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #f3f1fa;
+            box-sizing: border-box;
+            border-radius: 10px;
+            width: 360px;
+            height: 40px;
+        }
+        &__search {
+            margin: 0 60px;
+        }
+        .contacts {
+            &__number {
+                font-size: 18px;
+                font-weight: 700;
+                margin: 2px 0;
+            }
+            &__info {
+                font-size: 11px;
+                font-weight: 400;
+            }
+        }
+        &__contacts {
+            margin-right: 21px;
+        }
+
+        .button_question {
+            border: 2px solid #5d43e1;
+
+            width: 131px;
+
+            color: #5d43e1;
+        }
+        &__question {
+            margin-right: 20px;
+        }
+
+        .enter {
+            &__content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 15px;
+                width: 100%;
+            }
+        }
+        .button_enter {
+            background-color: #5d43e1;
+            width: 100px;
+            color: #fff;
+        }
+    }
+
+    .navigation {
+        text-transform: uppercase;
+        background-color: #1a191f;
+        color: #fff;
+        display: flex;
+        border-radius: 10px;
+        height: 64px;
+        font-size: 14px;
+        font-weight: 700;
+        justify-content: space-between;
+        &__item {
+            padding: 0 28px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            &:hover {
+                background: #ffffff;
+                color: #5d43e1;
+            }
+            &:nth-child(2) {
+                margin-left: 12px;
+                padding-left: 20px;
+            }
+
+            &_sale {
+                padding: 0 27px;
+                color: #fff !important;
+                border-radius: 10px;
+                background-color: #f1592a !important;
+            }
+        }
+        &__items {
+            display: flex;
+        }
+    }
+}
+
+.button {
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    height: 40px;
+}
