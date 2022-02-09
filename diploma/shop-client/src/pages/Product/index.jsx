@@ -11,7 +11,7 @@ function Product() {
             <TopMenu />
             <BreadCrumbs />
             <ProductsItem />
-            <ProductsList title={"Похожие товары"} />
+            <ProductsList title={"Похожие товары"} className="products-list__products-page" />
             <Footer />
         </div>
     );

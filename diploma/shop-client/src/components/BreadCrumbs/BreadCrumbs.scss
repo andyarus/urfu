@@ -1,0 +1,23 @@
+.bread-crumbs {
+    margin-left: 120px;
+    display: flex;
+    margin-bottom: 29px;
+    &__item {
+        display: flex;
+        &_name {
+            font-size: 12px;
+
+            font-weight: 400;
+
+            cursor: pointer;
+        }
+        &_separator {
+            margin: 0 12px;
+        }
+        &_last {
+            .bread-crumbs__item_separator {
+                display: none;
+            }
+        }
+    }
+}
