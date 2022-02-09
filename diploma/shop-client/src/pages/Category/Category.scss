@@ -1,0 +1,199 @@
+.categories {
+    margin: 0 120px;
+    margin-top: 40px;
+    display: flex;
+    .full-filter-settings {
+        width: 200px;
+        &__title {
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 400;
+            color: #1a191f;
+            margin-bottom: 20px;
+        }
+        &__item {
+            &-title {
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 17px;
+                text-transform: uppercase;
+                color: #000000;
+                margin-bottom: 10px;
+            }
+            &-filter {
+                font-size: 14px;
+                color: #8c8c8f;
+
+                &_checkbox {
+                    label {
+                        display: flex;
+                        margin-bottom: 10px;
+                        align-items: center;
+                    }
+                    display: flex;
+                    flex-direction: column;
+                    input[type="checkbox"] {
+                        margin: 0;
+                        margin-right: 8px;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+            margin-bottom: 20px;
+        }
+        &__submit {
+            margin-top: 34px;
+            margin-bottom: 21px;
+            width: 160px;
+            height: 50px;
+            background: #5d43e1;
+            border-radius: 10px;
+            font-size: 16px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        &__reset {
+            font-size: 14px;
+            margin-left: 24px;
+
+            color: #8c8c8f;
+        }
+    }
+    .categories-content {
+        width: calc(100% - 200px);
+        &__title {
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 37px;
+            color: #1a191f;
+            margin-bottom: 24px;
+        }
+        &__settings {
+            margin-bottom: 20px;
+            border: 1px solid #f3f1fa;
+            padding: 11px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            border-radius: 10px;
+
+            .filter-view-info {
+                display: flex;
+                margin-left: 20px;
+                &__name {
+                    display: flex;
+                    align-items: center;
+                    font-weight: normal;
+                    font-size: 12px;
+                    color: #231f20;
+                    margin-right: 15px;
+                }
+                &__item {
+                    margin-right: 5px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    background: #5d43e1;
+                    border-radius: 18px;
+                    font-weight: bold;
+                    font-size: 12px;
+                    color: #ffffff;
+                    &_title {
+                        margin-left: 12px;
+                        margin-right: 5px;
+                    }
+                    &_choices {
+                        margin-right: 7px;
+                    }
+                    &_cansel {
+                        display: flex;
+
+                        margin-right: 8px;
+                        svg {
+                            width: 14px;
+                            height: 14px;
+                        }
+                    }
+                }
+                &__reset {
+                    display: flex;
+                    align-items: center;
+                    font-size: 12px;
+                    line-height: 15px;
+                    color: #8c8c8f;
+                }
+            }
+
+            .view-settings {
+                display: flex;
+                &__item {
+                    margin-right: 10px;
+                    &_sort {
+                        margin-right: 30px;
+                        .view-settings__item_choice {
+                            padding: 0 33px;
+                        }
+                    }
+                    display: flex;
+                    &_title {
+                        font-size: 12px;
+                        color: #231f20;
+                        display: flex;
+                        align-items: center;
+                        margin-right: 10px;
+                    }
+                    &_choice {
+                        display: flex;
+                        align-items: center;
+                        background: #ffffff;
+                        border: 1px solid #1a191f;
+                        box-sizing: border-box;
+                        border-radius: 5px;
+                        height: 30px;
+                        padding: 0 15px;
+                        font-size: 14px;
+                        color: #1a191f;
+                    }
+                }
+            }
+        }
+        &__products {
+            margin-bottom: 66px;
+            display: grid;
+            grid-template-columns: repeat(4, 240px);
+            row-gap: 23px;
+            column-gap: 15px;
+            justify-content: space-between;
+        }
+        &__pagination {
+            margin-bottom: 68px;
+            display: flex;
+            justify-content: center;
+            &_item {
+                width: 40px;
+                height: 40px;
+                background: #ffffff;
+                border-radius: 10px;
+                margin-right: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 19px;
+                text-transform: uppercase;
+                color: #1a191f;
+            }
+            &_active {
+                border: 2px solid #5D43E1;
+            }
+        }
+    }
+}

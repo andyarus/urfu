@@ -1,6 +1,6 @@
 import Main from "./pages/Main";
 import Product from "./pages/Product";
-import Categories from "./pages/Categories";
+import Category from "./pages/Category";
 import Search from "./pages/Search";
 import Order from "./pages/Order";
 import Cart from "./pages/Cart";
@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 function App() {
     return (
         <div className="App">
-            <Product />
+            <Category />
         </div>
     );
 }
