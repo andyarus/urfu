@@ -15,18 +15,18 @@ function Category() {
         <div>
             <TopMenu />
             <BreadCrumbs />
-            <div class="categories">
-                <div class="categories__full-filter-settings full-filter-settings">
-                    <div class="full-filter-settings__title">Фильтр</div>
-                    <div class="full-filter-settings__item">
-                        <div class="full-filter-settings__item-title">Цена</div>
-                        <div class="full-filter-settings__item-filter full-filter-settings__item-filter_range">
+            <div className="categories">
+                <div className="categories__full-filter-settings full-filter-settings">
+                    <div className="full-filter-settings__title">Фильтр</div>
+                    <div className="full-filter-settings__item">
+                        <div className="full-filter-settings__item-title">Цена</div>
+                        <div className="full-filter-settings__item-filter full-filter-settings__item-filter_range">
                             <input type="range" name="" id="" />
                         </div>
                     </div>
-                    <div class="full-filter-settings__item">
-                        <div class="full-filter-settings__item-title">Размер</div>
-                        <div class="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
+                    <div className="full-filter-settings__item">
+                        <div className="full-filter-settings__item-title">Размер</div>
+                        <div className="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
                             <label>
                                 <input type="checkbox" name="" id="" />
                                 2.5 (2)
@@ -44,9 +44,9 @@ function Category() {
                             </label>
                         </div>
                     </div>
-                    <div class="full-filter-settings__item">
-                        <div class="full-filter-settings__item-title">Пол</div>
-                        <div class="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
+                    <div className="full-filter-settings__item">
+                        <div className="full-filter-settings__item-title">Пол</div>
+                        <div className="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
                             <label>
                                 <input type="checkbox" name="" id="" />
                                 Мужские
@@ -57,9 +57,9 @@ function Category() {
                             </label>
                         </div>
                     </div>
-                    <div class="full-filter-settings__item">
-                        <div class="full-filter-settings__item-title">Бренд</div>
-                        <div class="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
+                    <div className="full-filter-settings__item">
+                        <div className="full-filter-settings__item-title">Бренд</div>
+                        <div className="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
                             <label>
                                 <input type="checkbox" name="" id="" />
                                 Addidas (4)
@@ -70,9 +70,9 @@ function Category() {
                             </label>
                         </div>
                     </div>
-                    <div class="full-filter-settings__item">
-                        <div class="full-filter-settings__item-title">Назначение</div>
-                        <div class="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
+                    <div className="full-filter-settings__item">
+                        <div className="full-filter-settings__item-title">Назначение</div>
+                        <div className="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
                             <label>
                                 <input type="checkbox" name="" id="" />
                                 Модные (1)
@@ -95,9 +95,9 @@ function Category() {
                             </label>
                         </div>
                     </div>
-                    <div class="full-filter-settings__item">
-                        <div class="full-filter-settings__item-title">Цвет</div>
-                        <div class="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
+                    <div className="full-filter-settings__item">
+                        <div className="full-filter-settings__item-title">Цвет</div>
+                        <div className="full-filter-settings__item-filter full-filter-settings__item-filter_checkbox">
                             <label>
                                 <input type="checkbox" name="" id="" />
                                 Белый (1)
@@ -120,18 +120,18 @@ function Category() {
                             </label>
                         </div>
                     </div>
-                    <div class="full-filter-settings__submit">Применить</div>
-                    <div class="full-filter-settings__reset">Сбросить фильтр</div>
+                    <div className="full-filter-settings__submit">Применить</div>
+                    <div className="full-filter-settings__reset">Сбросить фильтр</div>
                 </div>
-                <div class="categories__categories-content categories-content">
-                    <div class="categories-content__title">БЕГОВЫЕ КРОССОВКИ</div>
-                    <div class="categories-content__settings">
-                        <div class="categories-content__filter-view-info filter-view-info">
-                            <div class="filter-view-info__name">Ваш выбор</div>
-                            <div class="filter-view-info__item">
-                                <div class="filter-view-info__item_title">Размер:</div>
-                                <div class="filter-view-info__item_choices">2.5, 4.5</div>
-                                <div class="filter-view-info__item_cansel">
+                <div className="categories__categories-content categories-content">
+                    <div className="categories-content__title">БЕГОВЫЕ КРОССОВКИ</div>
+                    <div className="categories-content__settings">
+                        <div className="categories-content__filter-view-info filter-view-info">
+                            <div className="filter-view-info__name">Ваш выбор</div>
+                            <div className="filter-view-info__item">
+                                <div className="filter-view-info__item_title">Размер:</div>
+                                <div className="filter-view-info__item_choices">2.5, 4.5</div>
+                                <div className="filter-view-info__item_cansel">
                                     <svg
                                         width="14"
                                         height="15"
@@ -146,10 +146,10 @@ function Category() {
                                     </svg>
                                 </div>
                             </div>
-                            <div class="filter-view-info__item">
-                                <div class="filter-view-info__item_title">Цвет:</div>
-                                <div class="filter-view-info__item_choices">Желтый</div>
-                                <div class="filter-view-info__item_cansel">
+                            <div className="filter-view-info__item">
+                                <div className="filter-view-info__item_title">Цвет:</div>
+                                <div className="filter-view-info__item_choices">Желтый</div>
+                                <div className="filter-view-info__item_cansel">
                                     <svg
                                         width="14"
                                         height="15"
@@ -164,20 +164,20 @@ function Category() {
                                     </svg>
                                 </div>
                             </div>
-                            <div class="filter-view-info__reset">Сбросить фильтр</div>
+                            <div className="filter-view-info__reset">Сбросить фильтр</div>
                         </div>
-                        <div class="categories-content__view-settings view-settings">
-                            <div class="view-settings__item view-settings__item_sort">
-                                <div class="view-settings__item_title">Сортировать по</div>
-                                <div class="view-settings__item_choice">Цене</div>
+                        <div className="categories-content__view-settings view-settings">
+                            <div className="view-settings__item view-settings__item_sort">
+                                <div className="view-settings__item_title">Сортировать по</div>
+                                <div className="view-settings__item_choice">Цене</div>
                             </div>
-                            <div class="view-settings__item">
-                                <div class="view-settings__item_title">Показать по</div>
-                                <div class="view-settings__item_choice">20</div>
+                            <div className="view-settings__item">
+                                <div className="view-settings__item_title">Показать по</div>
+                                <div className="view-settings__item_choice">20</div>
                             </div>
                         </div>
                     </div>
-                    <div class="categories-content__products">
+                    <div className="categories-content__products">
                         <ProductsListItem/>
                         <ProductsListItem/>
                         <ProductsListItem/>
@@ -191,8 +191,8 @@ function Category() {
                         <ProductsListItem/>
                         <ProductsListItem/>
                     </div>
-                    <div class="categories-content__pagination">
-                        <div class="categories-content__pagination_item">
+                    <div className="categories-content__pagination">
+                        <div className="categories-content__pagination_item">
                             <svg
                                 width="11"
                                 height="18"
@@ -206,12 +206,12 @@ function Category() {
                                 />
                             </svg>
                         </div>
-                        <div class="categories-content__pagination_item">1</div>
-                        <div class="categories-content__pagination_item categories-content__pagination_active">2</div>
-                        <div class="categories-content__pagination_item">3</div>
-                        <div class="categories-content__pagination_item">4</div>
-                        <div class="categories-content__pagination_item">5</div>
-                        <div class="categories-content__pagination_item">
+                        <div className="categories-content__pagination_item">1</div>
+                        <div className="categories-content__pagination_item categories-content__pagination_active">2</div>
+                        <div className="categories-content__pagination_item">3</div>
+                        <div className="categories-content__pagination_item">4</div>
+                        <div className="categories-content__pagination_item">5</div>
+                        <div className="categories-content__pagination_item">
                             <svg
                                 width="11"
                                 height="18"

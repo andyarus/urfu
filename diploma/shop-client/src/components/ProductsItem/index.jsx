@@ -103,14 +103,14 @@ function ProductsItem() {
                     </div>
                 </div>
             </div>
-            <div class="product-addition-info__switch">
-                <div class="product-addition-info__switch_item product-addition-info__switch_active">Описание</div>
-                <div class="product-addition-info__switch_item">Таблица размеров</div>
-                <div class="product-addition-info__switch_item">О бренде</div>
-                <div class="product-addition-info__switch_item">Доставка и оплата</div>
+            <div className="product-addition-info__switch">
+                <div className="product-addition-info__switch_item product-addition-info__switch_active">Описание</div>
+                <div className="product-addition-info__switch_item">Таблица размеров</div>
+                <div className="product-addition-info__switch_item">О бренде</div>
+                <div className="product-addition-info__switch_item">Доставка и оплата</div>
             </div>
-            <div class="product-addition-info__content">
-                <div class="product-addition-info__text">
+            <div className="product-addition-info__content">
+                <div className="product-addition-info__text">
                     <p>
                         Очередное воплощение культовой модели Wave Rider вышло с новациями в области верха и средней
                         части подошвы. Примененная технология Mizuno Enerzy дает в плюсе 17% амортизации и 15%
@@ -136,9 +136,9 @@ function ProductsItem() {
                     </p>
                     <p>Подходят нейтральным пронаторам.</p>
                 </div>
-                <div class="product-addition-info__advantages">
-                    <div class="advantages-item">
-                        <div class="advantages-item__icon">
+                <div className="product-addition-info__advantages">
+                    <div className="advantages-item">
+                        <div className="advantages-item__icon">
                             <svg
                                 width="28"
                                 height="24"
@@ -152,13 +152,13 @@ function ProductsItem() {
                                 />
                             </svg>
                         </div>
-                        <div class="advantages-item__title">Надежный магазин</div>
-                        <div class="advantages-item__text">
+                        <div className="advantages-item__title">Надежный магазин</div>
+                        <div className="advantages-item__text">
                             Более 3000 положительных отзывов и 40000 заказов за 7 лет работы
                         </div>
                     </div>
-                    <div class="advantages-item">
-                        <div class="advantages-item__icon">
+                    <div className="advantages-item">
+                        <div className="advantages-item__icon">
                             <svg
                                 width="28"
                                 height="24"
@@ -172,11 +172,11 @@ function ProductsItem() {
                                 />
                             </svg>
                         </div>
-                        <div class="advantages-item__title">Оплата при получении</div>
-                        <div class="advantages-item__text">Оплачивайте заказ после получения и примерки*</div>
+                        <div className="advantages-item__title">Оплата при получении</div>
+                        <div className="advantages-item__text">Оплачивайте заказ после получения и примерки*</div>
                     </div>
-                    <div class="advantages-item">
-                        <div class="advantages-item__icon">
+                    <div className="advantages-item">
+                        <div className="advantages-item__icon">
                             <svg
                                 width="28"
                                 height="24"
@@ -190,11 +190,11 @@ function ProductsItem() {
                                 />
                             </svg>
                         </div>
-                        <div class="advantages-item__title">Оригинальные товары</div>
-                        <div class="advantages-item__text">Только оригинальные товары от официальных дилеров.</div>
+                        <div className="advantages-item__title">Оригинальные товары</div>
+                        <div className="advantages-item__text">Только оригинальные товары от официальных дилеров.</div>
                     </div>
-                    <div class="advantages-item">
-                        <div class="advantages-item__icon">
+                    <div className="advantages-item">
+                        <div className="advantages-item__icon">
                             <svg
                                 width="28"
                                 height="24"
@@ -208,8 +208,8 @@ function ProductsItem() {
                                 />
                             </svg>
                         </div>
-                        <div class="advantages-item__title">Размер на выбор</div>
-                        <div class="advantages-item__text">
+                        <div className="advantages-item__title">Размер на выбор</div>
+                        <div className="advantages-item__text">
                             У нас вы можете заказать два размера на примерку без лишних проблем
                         </div>
                     </div>

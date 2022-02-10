@@ -1,0 +1,21 @@
+.search-result {
+    margin: 40px 120px 0 120px;
+    &__title {
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #1a191f;
+    }
+    &__items {
+        margin-bottom: 70px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 240px);
+        column-gap: 15px;
+        justify-content: space-between;
+        row-gap: 23px;
+
+    }
+    &__pagination {
+        margin-bottom: 116px;
+    }
+}
