@@ -5,13 +5,17 @@ import CartResultInfo from "../../components/CartResultInfo";
 import OrderCompletion from "../../components/OrderCompletion";
 import Footer from "../../components/Footer";
 
+import "./Order.scss"
+
 function Search() {
     return (
         <div>
             <TopMenu />
             <BreadCrumbs />
-            <CartResultInfo />
-            <OrderCompletion />
+            <div class="order">
+                <CartResultInfo />
+                <OrderCompletion />
+            </div>
             <Footer />
         </div>
     );

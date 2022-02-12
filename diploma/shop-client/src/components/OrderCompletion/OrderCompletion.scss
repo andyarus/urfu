@@ -1,0 +1,159 @@
+.completion-form {
+    &__auth-info {
+        margin-bottom: 38px;
+    }
+    .auth-info {
+        display: flex;
+        font-size: 26px;
+        &__text {
+            margin-right: 12px;
+            color: #1a191f;
+        }
+        &__enter {
+            cursor: pointer;
+            color: #5d43e1;
+        }
+    }
+    &__input {
+        &_country {
+            margin-bottom: 19px;
+        }
+        &_city {
+            margin-bottom: 30px;
+        }
+        &_street {
+            margin-bottom: 19px;
+        }
+        &_house {
+            margin-right: 19px;
+        }
+        &_name {
+            margin-right: 19px;
+            margin-bottom: 20px;
+        }
+        &_telephone {
+            margin-bottom: 20px;
+        }
+        &_email {
+            margin-bottom: 30px;
+        }
+    }
+    &__input-line {
+        display: flex;
+    }
+    .delivary-settings {
+        &__title {
+            font-size: 26px;
+            color: #231f20;
+        }
+        .delivary-type {
+            display: flex;
+            margin: 20px 0;
+            &__info {
+                margin-right: 30px;
+                &_title {
+                    font-weight: bold;
+                    font-size: 16px;
+                    margin-bottom: 8px;
+                    color: #231f20;
+                }
+                &_description {
+                    font-size: 14px;
+                    margin-top: 5px;
+                    color: #231f20;
+                }
+            }
+            &__price {
+                font-weight: bold;
+                font-size: 16px;
+
+                color: #231f20;
+            }
+            input {
+                margin: 0;
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+        }
+    }
+    &__textarea_comment {
+        margin-top: 19px;
+        margin-bottom: 30px;
+    }
+    &__buyer {
+        margin-bottom: 20px;
+        font-size: 26px;
+
+        color: #231f20;
+    }
+    .payment-method__type {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .payment-method {
+        &__title {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #231f20;
+        }
+        margin: 20px 0;
+        &__info {
+            margin-right: 30px;
+            &_title {
+                width: 332px;
+                font-weight: bold;
+                font-size: 16px;
+                margin-bottom: 8px;
+                color: #231f20;
+            }
+            &_description {
+                font-size: 14px;
+                margin-top: 5px;
+                color: #231f20;
+                width: 191px;
+            }
+        }
+        &__price {
+            font-weight: bold;
+            font-size: 16px;
+
+            color: #231f20;
+        }
+        input {
+            margin: 0;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    }
+    &__to-pay {
+        width: 251px;
+        height: 50px;
+        background-color: #5d43e1;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-bottom: 264px;
+        cursor: pointer;
+    }
+    .to-pay {
+        &__content {
+            color: #ffffff;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &__icon {
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
