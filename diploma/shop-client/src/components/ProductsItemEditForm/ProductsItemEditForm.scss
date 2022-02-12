@@ -1,0 +1,185 @@
+.admin-item {
+    margin: 30px 125px 104px 120px;
+    background: #ffffff;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding-left: 48px;
+    padding-right: 59px;
+    display: flex;
+    flex-direction: column;
+
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 35px;
+    }
+
+    &__title {
+        width: calc(100% - 266px);
+        font-size: 30px;
+        color: #1a191f;
+    }
+    &__delete {
+        border: 2px solid #1a191f;
+        box-sizing: border-box;
+        border-radius: 10px;
+        width: 106px;
+        height: 40px;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-left: 50px;
+        color: #1a191f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.admin-item-settings {
+    &__title {
+        margin-top: 46px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 16px;
+
+        color: #1a191f;
+    }
+    &__input {
+        &_product-name {
+            margin-bottom: 20px;
+        }
+        &_articul {
+            margin-bottom: 20px;
+        }
+        &_brand {
+            margin-bottom: 30px;
+        }
+        &_now-price {
+            margin-bottom: 20px;
+        }
+        &_discoun {
+            margin-bottom: 20px;
+        }
+        &_without-discount {
+            margin-bottom: 30px;
+        }
+    }
+
+    .admin-item-photos {
+        margin-bottom: 30px;
+        &__title {
+            font-weight: bold;
+            font-size: 16px;
+            color: #1a191f;
+            margin-bottom: 20px;
+        }
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 200px);
+            column-gap: 20px;
+            row-gap: 20px;
+        }
+        &__item {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #f3f1fa;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 70%;
+            }
+            &_add {
+                cursor: pointer;
+            }
+        }
+    }
+    &__price-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 20px;
+
+        color: #1a191f;
+    }
+    &__size-title {
+        margin-bottom: 26px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #1a191f;
+    }
+    &__size-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 37px);
+        column-gap: 3px;
+        row-gap: 3px;
+        margin-bottom: 46px;
+    }
+    &__size-item {
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 37px;
+        height: 28px;
+        background: #ffffff;
+        border: 1px solid #f3f1fa;
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-size: 13px;
+        cursor: pointer;
+
+        color: #8c8c8f;
+        &_active {
+            border: 2px solid #5d43e1;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+    }
+    &__save {
+        margin-bottom: 72px;
+        width: 200px;
+        height: 50px;
+        background: #5d43e1;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &_icon {
+            margin-right: 20px;
+        }
+        &_title {
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+
+            color: #ffffff;
+        }
+    }
+}
+
+.input {
+    &__title {
+        font-size: 14px;
+        color: #1a191f;
+        margin-bottom: 5px;
+    }
+    input {
+        width: 300px;
+        border: 1px solid #f3f1fa;
+        box-sizing: border-box;
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 20px;
+
+        color: #8c8c8f;
+    }
+    &_small {
+        input {
+            width: 100px;
+        }
+    }
+}
