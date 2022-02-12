@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 
 function Product() {
     return (
-        <div>
+        <div class="page-style">
             <TopMenu />
             <BreadCrumbs />
             <ProductsItem />
