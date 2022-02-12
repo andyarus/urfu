@@ -1,5 +1,8 @@
 import React from "react";
+import Product from "../Product";
 import Button from "../../components/Button";
+
+import "./Feedback.scss";
 
 function Feedback() {
     const onSend = () => {
@@ -9,11 +12,41 @@ function Feedback() {
         console.log("Я передумал");
     };
     return (
-        <div>
-            Задать вопрос
-            <Button onClick={onSend}>Отправить</Button>
-            <Button onClick={onСancel}>Я передумал</Button>
-        </div>
+        <>
+            <div className="overlay"></div>
+            <div className="page-form">
+                <div className="page-form__title">Задать вопрос </div>
+                <div className="page-form__form form">
+                    <div className="form__title">Добро пожаловать на самый лучший спортивный магазин</div>
+                    <div className="form__input form__input_email input">
+                        <div className="input__title">Ваше имя</div>
+                        <input type="text" />
+                    </div>
+                    <div className="form__input form__input_password input">
+                        <div className="input__title">Пароль</div>
+                        <input type="text" />
+                    </div>
+                    <div className="form__input form__input_password2 input">
+                        <div className="input__title">Ваша почта</div>
+                        <input type="text" />
+                    </div>
+                    <div className="form__textarea form__textarea_feetback-comment textarea">
+                        <div className="textarea__title">Комментарий к заказу</div>
+                        <textarea></textarea>
+                    </div>
+                    <div className="form__processing-data">
+                        <input type="checkbox" name="" id="" />
+                        Согласие на обработку персональных данных
+                    </div>
+                    <div className="form__text">Настоящим подтверждаю, что я ознакомлен и согласен с условиями</div>
+                    <div className="form__actions">
+                        <div className="form__send">Отправить</div>
+                        <div className="form__cansel">Я передумал</div>
+                    </div>
+                </div>
+            </div>
+            <Product />;
+        </>
     );
 }
 

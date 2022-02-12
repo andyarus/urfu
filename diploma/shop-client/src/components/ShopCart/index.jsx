@@ -10,30 +10,30 @@ function ShopCart() {
         console.log(onApproveOrder);
     };
     return (
-        <div class="cart">
-            <div class="cart__cart-info cart-info">
-                <div class="cart-info__title">Корзина</div>
-                <div class="cart-info__cart-items cart-items">
-                    <div class="cart-info__cart-item cart-item">
-                        <div class="cart-item__logo">
+        <div className="cart">
+            <div className="cart__cart-info cart-info">
+                <div className="cart-info__title">Корзина</div>
+                <div className="cart-info__cart-items cart-items">
+                    <div className="cart-info__cart-item cart-item">
+                        <div className="cart-item__logo">
                             <img src={preview1} alt="" />
                         </div>
-                        <div class="cart-item__info">
-                            <div class="cart-item__info_title">
+                        <div className="cart-item__info">
+                            <div className="cart-item__info_title">
                                 Mizuno Wave Rider 24 кроссовки для бега мужские желтые (Распродажа) (8)
                             </div>
-                            <div class="cart-item__info_article">Артикул J1GC2003 17</div>
-                            <div class="cart-item__info_size">Размер - 10.5</div>
+                            <div className="cart-item__info_article">Артикул J1GC2003 17</div>
+                            <div className="cart-item__info_size">Размер - 10.5</div>
                         </div>
-                        <div class="cart-item__price">
-                            <div class="cart-item__price_now">8 590 руб</div>
-                            <div class="cart-item__price_discount">
-                                <div class="cart-item__price_without-discount">11 490 ₽</div>
-                                <div class="cart-item__price_discount-persent">- 25%</div>
+                        <div className="cart-item__price">
+                            <div className="cart-item__price_now">8 590 руб</div>
+                            <div className="cart-item__price_discount">
+                                <div className="cart-item__price_without-discount">11 490 ₽</div>
+                                <div className="cart-item__price_discount-persent">- 25%</div>
                             </div>
                         </div>
-                        <div class="cart-item__count">
-                            <div class="cart-item__count_toggler">
+                        <div className="cart-item__count">
+                            <div className="cart-item__count_toggler">
                                 <svg
                                     width="21"
                                     height="22"
@@ -47,8 +47,8 @@ function ShopCart() {
                                     />
                                 </svg>
                             </div>
-                            <div class="cart-item__count_number">1</div>
-                            <div class="cart-item__count_toggler">
+                            <div className="cart-item__count_number">1</div>
+                            <div className="cart-item__count_toggler">
                                 <svg
                                     width="21"
                                     height="22"
@@ -63,11 +63,11 @@ function ShopCart() {
                                 </svg>
                             </div>
                         </div>
-                        <div class="cart-item__full-price">
-                            <div class="cart-item__full-price_money">8 590 руб</div>
-                            <div class="cart-item__full-price_count">1 шт.</div>
+                        <div className="cart-item__full-price">
+                            <div className="cart-item__full-price_money">8 590 руб</div>
+                            <div className="cart-item__full-price_count">1 шт.</div>
                         </div>
-                        <div class="cart-item__delete">
+                        <div className="cart-item__delete">
                             <svg
                                 width="24"
                                 height="25"
@@ -82,26 +82,26 @@ function ShopCart() {
                             </svg>
                         </div>
                     </div>
-                    <div class="cart-info__cart-item cart-item">
-                        <div class="cart-item__logo">
+                    <div className="cart-info__cart-item cart-item">
+                        <div className="cart-item__logo">
                             <img src={preview1} alt="" />
                         </div>
-                        <div class="cart-item__info">
-                            <div class="cart-item__info_title">
+                        <div className="cart-item__info">
+                            <div className="cart-item__info_title">
                                 Mizuno Wave Rider 24 кроссовки для бега мужские желтые (Распродажа) (8)
                             </div>
-                            <div class="cart-item__info_article">Артикул J1GC2003 17</div>
-                            <div class="cart-item__info_size">Размер - 10.5</div>
+                            <div className="cart-item__info_article">Артикул J1GC2003 17</div>
+                            <div className="cart-item__info_size">Размер - 10.5</div>
                         </div>
-                        <div class="cart-item__price">
-                            <div class="cart-item__price_now">8 590 руб</div>
-                            <div class="cart-item__price_discount">
-                                <div class="cart-item__price_without-discount">11 490 ₽</div>
-                                <div class="cart-item__price_discount-persent">- 25%</div>
+                        <div className="cart-item__price">
+                            <div className="cart-item__price_now">8 590 руб</div>
+                            <div className="cart-item__price_discount">
+                                <div className="cart-item__price_without-discount">11 490 ₽</div>
+                                <div className="cart-item__price_discount-persent">- 25%</div>
                             </div>
                         </div>
-                        <div class="cart-item__count">
-                            <div class="cart-item__count_toggler">
+                        <div className="cart-item__count">
+                            <div className="cart-item__count_toggler">
                                 <svg
                                     width="21"
                                     height="22"
@@ -115,8 +115,8 @@ function ShopCart() {
                                     />
                                 </svg>
                             </div>
-                            <div class="cart-item__count_number">1</div>
-                            <div class="cart-item__count_toggler">
+                            <div className="cart-item__count_number">1</div>
+                            <div className="cart-item__count_toggler">
                                 <svg
                                     width="21"
                                     height="22"
@@ -131,11 +131,11 @@ function ShopCart() {
                                 </svg>
                             </div>
                         </div>
-                        <div class="cart-item__full-price">
-                            <div class="cart-item__full-price_money">8 590 руб</div>
-                            <div class="cart-item__full-price_count">1 шт.</div>
+                        <div className="cart-item__full-price">
+                            <div className="cart-item__full-price_money">8 590 руб</div>
+                            <div className="cart-item__full-price_count">1 шт.</div>
                         </div>
-                        <div class="cart-item__delete">
+                        <div className="cart-item__delete">
                             <svg
                                 width="24"
                                 height="25"
@@ -150,26 +150,26 @@ function ShopCart() {
                             </svg>
                         </div>
                     </div>
-                    <div class="cart-info__cart-item cart-item">
-                        <div class="cart-item__logo">
+                    <div className="cart-info__cart-item cart-item">
+                        <div className="cart-item__logo">
                             <img src={preview1} alt="" />
                         </div>
-                        <div class="cart-item__info">
-                            <div class="cart-item__info_title">
+                        <div className="cart-item__info">
+                            <div className="cart-item__info_title">
                                 Mizuno Wave Rider 24 кроссовки для бега мужские желтые (Распродажа) (8)
                             </div>
-                            <div class="cart-item__info_article">Артикул J1GC2003 17</div>
-                            <div class="cart-item__info_size">Размер - 10.5</div>
+                            <div className="cart-item__info_article">Артикул J1GC2003 17</div>
+                            <div className="cart-item__info_size">Размер - 10.5</div>
                         </div>
-                        <div class="cart-item__price">
-                            <div class="cart-item__price_now">8 590 руб</div>
-                            <div class="cart-item__price_discount">
-                                <div class="cart-item__price_without-discount">11 490 ₽</div>
-                                <div class="cart-item__price_discount-persent">- 25%</div>
+                        <div className="cart-item__price">
+                            <div className="cart-item__price_now">8 590 руб</div>
+                            <div className="cart-item__price_discount">
+                                <div className="cart-item__price_without-discount">11 490 ₽</div>
+                                <div className="cart-item__price_discount-persent">- 25%</div>
                             </div>
                         </div>
-                        <div class="cart-item__count">
-                            <div class="cart-item__count_toggler">
+                        <div className="cart-item__count">
+                            <div className="cart-item__count_toggler">
                                 <svg
                                     width="21"
                                     height="22"
@@ -183,8 +183,8 @@ function ShopCart() {
                                     />
                                 </svg>
                             </div>
-                            <div class="cart-item__count_number">1</div>
-                            <div class="cart-item__count_toggler">
+                            <div className="cart-item__count_number">1</div>
+                            <div className="cart-item__count_toggler">
                                 <svg
                                     width="21"
                                     height="22"
@@ -199,11 +199,11 @@ function ShopCart() {
                                 </svg>
                             </div>
                         </div>
-                        <div class="cart-item__full-price">
-                            <div class="cart-item__full-price_money">8 590 руб</div>
-                            <div class="cart-item__full-price_count">1 шт.</div>
+                        <div className="cart-item__full-price">
+                            <div className="cart-item__full-price_money">8 590 руб</div>
+                            <div className="cart-item__full-price_count">1 шт.</div>
                         </div>
-                        <div class="cart-item__delete">
+                        <div className="cart-item__delete">
                             <svg
                                 width="24"
                                 height="25"
@@ -220,22 +220,22 @@ function ShopCart() {
                     </div>
                 </div>
             </div>
-            <div class="cart__total-price total-price">
-                <div class="total-price__title">Стоимость</div>
-                <div class="total-price__without-discount">
-                    <div class="total-price__without-discount_title">Общая цена:</div>
-                    <div class="total-price__without-discount_number">20480 руб</div>
+            <div className="cart__total-price total-price">
+                <div className="total-price__title">Стоимость</div>
+                <div className="total-price__without-discount">
+                    <div className="total-price__without-discount_title">Общая цена:</div>
+                    <div className="total-price__without-discount_number">20480 руб</div>
                 </div>
-                <div class="total-price__discount">
-                    <div class="total-price__discount_title">Скидка</div>
-                    <div class="total-price__discount_number">-2900 руб</div>
+                <div className="total-price__discount">
+                    <div className="total-price__discount_title">Скидка</div>
+                    <div className="total-price__discount_number">-2900 руб</div>
                 </div>
 
-                <div class="total-price__now">
-                    <div class="total-price__now_title">Итого:</div>
-                    <div class="total-price__now_number">17 130 руб</div>
+                <div className="total-price__now">
+                    <div className="total-price__now_title">Итого:</div>
+                    <div className="total-price__now_number">17 130 руб</div>
                 </div>
-                <div class="total-price__order">Оформить заказ</div>
+                <div className="total-price__order">Оформить заказ</div>
             </div>
         </div>
     );

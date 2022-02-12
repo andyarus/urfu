@@ -1,5 +1,6 @@
 import Main from "./pages/Main";
 import Product from "./pages/Product";
+import Feedback from "./pages/Feedback";
 import Category from "./pages/Category";
 import Search from "./pages/Search";
 import Order from "./pages/Order";
@@ -14,7 +15,7 @@ import Login from "./pages/Login";
 function App() {
     return (
         <div className="App">
-            <Registration />
+            <Feedback />
         </div>
     );
 }
