@@ -1,0 +1,25 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    &_admin {
+        margin-bottom: 59px;
+    }
+    &_item {
+        width: 40px;
+        height: 40px;
+        background: #ffffff;
+        border-radius: 10px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: uppercase;
+        color: #1a191f;
+    }
+    &_active {
+        border: 2px solid #5d43e1;
+    }
+}
