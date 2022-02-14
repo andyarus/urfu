@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import SizeItem from "../SizeItem";
 import Button from "../Button";
+
+import productsActions from "../../redux/actions/products";
+import cartActions from "../../redux/actions/cart";
+
+import { allSizes } from "../../api/product";
 
 import preview1 from "../../assets/preview1.png";
 import preview2 from "../../assets/preview2.png";
@@ -8,34 +17,94 @@ import preview4 from "../../assets/preview4.png";
 
 import "./ProductsItemEditForm.scss";
 
-function ProductsItemEditForm() {
+
+function ProductsItemEditForm({ item }) {
+    const dispatch = useDispatch();
+    const [productName, setproductName] = useState(item.name);
+    const [article, setArticle] = useState(item.article);
+    const [brand, setBrand] = useState(item.brand);
+    const [discount, setDiscount] = useState(item.discount);
+    const [description, setDescription] = useState(item.description);
+    const [price, setPrice] = useState(item.price);
+    const [size, setSize] = useState(item.size);
+
+    const setActiveSize = (number) => {
+        const tmpSize = size.filter((item) => item !== number);
+        if (tmpSize.length === size.length) {
+            tmpSize.push(number);
+        }
+        setSize(tmpSize);
+    };
+
     const onDelete = () => {
-        console.log("Удалить");
+        dispatch(productsActions.deleteProduct(item.id));
+        dispatch(cartActions.deleteItem(item.id));
     };
     const onSave = () => {
-        console.log("Сохранить");
+        dispatch(
+            productsActions.editProduct({
+                id: item.id,
+                article: article,
+                brand: brand,
+                size: size,
+                category_id: item.category_id,
+                name: productName,
+                description: description,
+                image_url: item.image_url,
+                price: price,
+                discount: discount,
+                created_on: item.created_on,
+            })
+        );
     };
     return (
         <div className="admin-item">
             <div className="admin-item__menu">
-                <div className="admin-item__title">
-                    Редактирование товара - Mizuno Wave Rider 24 кроссовки для бега мужские желтые (Распродажа) (8)
-                </div>
-                <div className="admin-item__delete">Удалить</div>
+                <div className="admin-item__title">Редактирование товара - {productName}</div>
+                <Link to="/AdminList" className="admin-item__delete" onClick={onDelete}>
+                    Удалить
+                </Link>
             </div>
             <div className="admin-item__admin-item-settings admin-item-settings">
                 <div className="admin-item-settings__title">Основные настройки</div>
                 <div className="admin-item-settings__input admin-item-settings__input_product-name input">
                     <div className="input__title">Наименование товара</div>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={productName}
+                        onChange={(e) => {
+                            setproductName(e.target.value);
+                        }}
+                    />
                 </div>
                 <div className="admin-item-settings__input admin-item-settings__input_articul input">
                     <div className="input__title">Артикул</div>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={article}
+                        onChange={(e) => {
+                            setArticle(e.target.value);
+                        }}
+                    />
                 </div>
                 <div className="admin-item-settings__input admin-item-settings__input_brand input">
                     <div className="input__title">Бренд</div>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={brand}
+                        onChange={(e) => {
+                            setBrand(e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="admin-item-settings__textarea admin-item-settings__textarea_comment textarea">
+                    <div className="textarea__title">Описане</div>
+                    <textarea
+                        value={description}
+                        onChange={(e) => {
+                            setDescription(e.target.value);
+                        }}
+                    ></textarea>
                 </div>
                 <div className="admin-item-settings__admin-item-photos admin-item-photos">
                     <div className="admin-item-photos__title">Фотографии</div>
@@ -68,34 +137,51 @@ function ProductsItemEditForm() {
                         </div>
                     </div>
                 </div>
-                <div className="admin-item-settings__price-title">Стоимость</div>
+                {/* <div className="admin-item-settings__price-title">Стоимость</div>
                 <div className="admin-item-settings__input admin-item-settings__input_now-price input">
                     <div className="input__title">Текущая цена</div>
-                    <input type="text" />
-                </div>
+                    <input type="text" value={productName}
+                        onChange={(e) => {
+                            setproductName(e.target.value);
+                        }} />
+                </div> */}
                 <div className="admin-item-settings__input admin-item-settings__input_discount input input_small">
                     <div className="input__title">Скидка</div>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={discount}
+                        onChange={(e) => {
+                            setDiscount(e.target.value);
+                        }}
+                    />
                 </div>
                 <div className="admin-item-settings__input admin-item-settings__input_without-discount input">
                     <div className="input__title">Старая цена</div>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={price}
+                        onChange={(e) => {
+                            setPrice(e.target.value);
+                        }}
+                    />
                 </div>
                 <div className="admin-item-settings__size-title">Размеры</div>
                 <div className="admin-item-settings__size-list">
-                    <div className="admin-item-settings__size-item admin-item-settings__size-item_active">1</div>
-                    <div className="admin-item-settings__size-item">2</div>
-                    <div className="admin-item-settings__size-item">3</div>
-                    <div className="admin-item-settings__size-item admin-item-settings__size-item_active">4</div>
-                    <div className="admin-item-settings__size-item">5</div>
-                    <div className="admin-item-settings__size-item admin-item-settings__size-item_active">6</div>
-                    <div className="admin-item-settings__size-item admin-item-settings__size-item_active">7</div>
-                    <div className="admin-item-settings__size-item admin-item-settings__size-item_active">8</div>
-                    <div className="admin-item-settings__size-item">9</div>
-                    <div className="admin-item-settings__size-item">10</div>
-                    <div className="admin-item-settings__size-item">11</div>
-                    <div className="admin-item-settings__size-item">12</div>
-                    <div className="admin-item-settings__size-item">14</div>
+                    {allSizes.map((item) => {
+                        const tmpSize = size.filter((num) => item === num);
+                        let activeSize = -1;
+                        if (tmpSize.length == 1) {
+                            activeSize = item;
+                        }
+                        return (
+                            <SizeItem
+                                key={item}
+                                number={item}
+                                activeSize={activeSize}
+                                setActiveSize={setActiveSize}
+                            ></SizeItem>
+                        );
+                    })}
                 </div>
                 <div className="admin-item-settings__save">
                     <div className="admin-item-settings__save_icon">
@@ -106,7 +192,9 @@ function ProductsItemEditForm() {
                             />
                         </svg>
                     </div>
-                    <div className="admin-item-settings__save_title">Сохранить</div>
+                    <Link to="/AdminList" className="admin-item-settings__save_title" onClick={onSave}>
+                        Сохранить
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import TopMenu from "../../components/TopMenu";
 import BreadCrumbs from "../../components/BreadCrumbs";
 import ProductsListItem from "../../components/ProductsList/ProductsListItem";
@@ -7,35 +9,34 @@ import Footer from "../../components/Footer";
 import "./Search.scss";
 
 function Search() {
+    const { products, search } = useSelector(({ products }) => {
+        const tmpProducts = products.items.filter((item) => {
+            let suitable = false;
+            if (
+                item.name.toLocaleLowerCase().includes(products.search.toLocaleLowerCase()) ||
+                item.description.toLocaleLowerCase().includes(products.search.toLocaleLowerCase())
+            ) {
+                suitable = true;
+            }
+            return suitable;
+        });
+        return { products: tmpProducts, search: products.search };
+    });
+
+    
+
+    console.log("products!!", products);
     return (
         <div>
-            <TopMenu />
             <BreadCrumbs />
             <div className="search-result">
-                <div className="search-result__title">По запросу «Кросовки» найдено 300 товаров</div>
+                <div className="search-result__title">По запросу «{search}» найдено {products.length} товаров</div>
                 <div className="search-result__items">
-                    <ProductsListItem />
-                    <ProductsListItem />
+                    {products.map(item => {
+                        return <ProductsListItem item={item} key={item.id}/>
 
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
-                    <ProductsListItem />
+                    })}
+                    
                 </div>
                 <div className="search-result__pagination pagination">
                     <div className="pagination_item">
@@ -61,7 +62,6 @@ function Search() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }

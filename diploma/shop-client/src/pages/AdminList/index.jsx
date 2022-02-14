@@ -7,10 +7,10 @@ import Footer from "../../components/Footer";
 function AdminList() {
     return (
         <div>
-            <TopMenu />
+
             <BreadCrumbs />
             <AdminProductList />
-            <Footer />
+
         </div>
     );
 }

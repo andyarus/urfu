@@ -12,6 +12,9 @@
         &__enter {
             cursor: pointer;
             color: #5d43e1;
+            svg {
+                margin-left: 8px;
+            }
         }
     }
     &__input {

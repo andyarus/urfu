@@ -10,9 +10,10 @@
 .page-form {
     width: 600px;
     position: absolute;
-    top: 2%!important;
     left: calc(50% - 310px);
-
+    &_feetback {
+        top: 2% !important;
+    }
     z-index: 2;
     &__title {
         font-weight: bold;
@@ -22,7 +23,7 @@
         margin-bottom: 25px;
     }
     .form {
-        width: 620px!important;
+        width: 620px !important;
         padding: 40px;
         background: #ffffff;
         box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.1);
@@ -62,9 +63,10 @@
             display: flex;
             margin-top: 35px;
         }
-        &__send, &__cansel {
+        &__send,
+        &__cansel {
             cursor: pointer;
-            background: #5D43E1;
+            background: #5d43e1;
             border-radius: 10px;
             width: 125px;
             height: 50px;

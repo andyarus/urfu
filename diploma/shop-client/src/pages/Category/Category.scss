@@ -3,6 +3,7 @@
     margin-top: 40px;
     display: flex;
     .full-filter-settings {
+        margin-bottom: 20px;
         width: 200px;
         &__title {
             font-size: 20px;
@@ -19,11 +20,36 @@
                 text-transform: uppercase;
                 color: #000000;
                 margin-bottom: 10px;
+                &_price {
+                    margin-bottom: 30px;
+                }
             }
             &-filter {
                 font-size: 14px;
                 color: #8c8c8f;
-
+                &_range {
+                    .input-range__label-container {
+                        padding: 3px 5px;
+                        background: #5d43e1;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        color: #ffffff;
+                    }
+                    width: 160px;
+                    .input-range__label--min,
+                    .input-range__label--max {
+                        z-index: -1;
+                        bottom: 20px;
+                        .input-range__label-container {
+                            background: #f3f1fa;
+                            color: #8c8c8f;
+                        }
+                    }
+                    .input-range__track--active,
+                    .input-range__slider {
+                        background: #5d43e1;
+                    }
+                }
                 &_checkbox {
                     label {
                         display: flex;
@@ -61,7 +87,7 @@
         &__reset {
             font-size: 14px;
             margin-left: 24px;
-
+            cursor: pointer;
             color: #8c8c8f;
         }
     }
@@ -124,6 +150,7 @@
                 }
                 &__reset {
                     display: flex;
+                    cursor: pointer;
                     align-items: center;
                     font-size: 12px;
                     line-height: 15px;
@@ -167,10 +194,9 @@
         &__products {
             margin-bottom: 66px;
             display: grid;
-            grid-template-columns: repeat(4, 240px);
+            grid-template-columns: repeat(auto-fit, 240px);
             row-gap: 23px;
             column-gap: 15px;
-            justify-content: space-between;
         }
         &__pagination {
             margin-bottom: 68px;
@@ -192,7 +218,7 @@
                 color: #1a191f;
             }
             &_active {
-                border: 2px solid #5D43E1;
+                border: 2px solid #5d43e1;
             }
         }
     }

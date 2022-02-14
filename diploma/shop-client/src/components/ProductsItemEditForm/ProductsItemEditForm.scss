@@ -20,6 +20,7 @@
         color: #1a191f;
     }
     &__delete {
+        text-decoration: none;
         border: 2px solid #1a191f;
         box-sizing: border-box;
         border-radius: 10px;
@@ -44,6 +45,9 @@
 
         color: #1a191f;
     }
+    &__textarea_comment {
+        margin-bottom: 20px;
+    }
     &__input {
         &_product-name {
             margin-bottom: 20px;
@@ -57,7 +61,7 @@
         &_now-price {
             margin-bottom: 20px;
         }
-        &_discoun {
+        &_discount {
             margin-bottom: 20px;
         }
         &_without-discount {
@@ -117,7 +121,6 @@
         margin-bottom: 46px;
     }
     &__size-item {
-        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -151,6 +154,7 @@
             margin-right: 20px;
         }
         &_title {
+            text-decoration: none;
             font-weight: bold;
             font-size: 18px;
             text-transform: uppercase;

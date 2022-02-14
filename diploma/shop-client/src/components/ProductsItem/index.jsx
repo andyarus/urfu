@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { numberWithSpaces } from "../../api/product";
+import cartActions from "../../redux/actions/cart";
+import SizeItem from "../SizeItem";
 import Button from "../Button";
 import ProductsItemAdditionalInfo from "./ProductsItemAdditionalInfo";
 import ProductsItemMainInfo from "./ProductsItemMainInfo";
 
-import bigSneakers from "../../assets/bigSneakers.png";
 import preview1 from "../../assets/preview1.png";
 import preview2 from "../../assets/preview2.png";
 import preview3 from "../../assets/preview3.png";
@@ -12,21 +16,27 @@ import preview5 from "../../assets/preview5.png";
 
 import "./ProductsItem.scss";
 
-function ProductsItem() {
+function ProductsItem({ item }) {
+    const [activeSize, setActiveSize] = useState();
     const toggleAdditionalInformation = (type) => {
         console.log(`toggleAdditionalInformation ${type}`);
     };
+    const dispatch = useDispatch();
+
+    const addToCart = () => {
+        console.log("addToCart");
+        dispatch(cartActions.setChangeItems({ count: 1, id: item.id }));
+    };
+    const priceNow = Math.round(item.price - (item.price * item.discount) / 100);
     return (
         <>
             <div className="product-full-item">
                 <div className="product-full-item__product-main-info product-main-info">
                     <div className="product-main-info__discription">
-                        <div className="product-main-info__title">
-                            Mizuno Wave Rider 24 кроссовки для бега мужские желтые (Распродажа)
-                        </div>
+                        <div className="product-main-info__title">{item.name}</div>
                         <div className="product-main-info__number">Артикул J1GC2003 17</div>
                         <div className="product-main-info__img">
-                            <img src={bigSneakers} alt="" />
+                            <img src={item.image_url} alt="" />
                         </div>
                     </div>
                     <div className="product-main-info__photo-preview photo-preview">
@@ -49,35 +59,36 @@ function ProductsItem() {
                     <div className="product-main-info__details">
                         <div className="product-main-info__product-price product-price">
                             <div className="product-price__title">Стоимость</div>
-                            <div className="product-price__now">8 590 ₽</div>
-                            <div className="product-price__without-discount">11 490 ₽</div>
+                            <div className="product-price__now">{numberWithSpaces(priceNow)} ₽</div>
+                            <div className="product-price__without-discount">{numberWithSpaces(item.price)} ₽</div>
                         </div>
                         <div className="product-main-info__size product-size">
                             <div className="product-size__title">Выберите размер</div>
                             <div className="product-size__line">
-                                <div className="product-size__item">1</div>
-                                <div className="product-size__item">2</div>
-                                <div className="product-size__item product-size__item_active">3</div>
-                                <div className="product-size__item">4</div>
-                                <div className="product-size__item">5</div>
+                                <SizeItem number={1} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={2} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={3} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={4} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={5} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                
                             </div>
                             <div className="product-size__line">
-                                <div className="product-size__item">6</div>
-                                <div className="product-size__item">7</div>
-                                <div className="product-size__item">8</div>
-                                <div className="product-size__item">9</div>
-                                <div className="product-size__item">10</div>
+                                <SizeItem number={6} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={7} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={8} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={9} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={10} setActiveSize={setActiveSize} activeSize={activeSize} />
                             </div>
                             <div className="product-size__line">
-                                <div className="product-size__item product-size__item_empty"></div>
-                                <div className="product-size__item">11</div>
-                                <div className="product-size__item">12</div>
-                                <div className="product-size__item">14</div>
-                                <div className="product-size__item product-size__item_empty"></div>
+                                <SizeItem number={0} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={11} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={12} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={14} setActiveSize={setActiveSize} activeSize={activeSize} />
+                                <SizeItem number={0} setActiveSize={setActiveSize} activeSize={activeSize} />
                             </div>
                         </div>
                         <div className="product-main-info__purchase purchase">
-                            <div className="purchase__add-to-cart">
+                            <div className="purchase__add-to-cart" onClick={addToCart}>
                                 <div className="add-to-cart__content">
                                     <div className="add-to-cart__icon">
                                         <svg
@@ -110,32 +121,7 @@ function ProductsItem() {
                 <div className="product-addition-info__switch_item">Доставка и оплата</div>
             </div>
             <div className="product-addition-info__content">
-                <div className="product-addition-info__text">
-                    <p>
-                        Очередное воплощение культовой модели Wave Rider вышло с новациями в области верха и средней
-                        части подошвы. Примененная технология Mizuno Enerzy дает в плюсе 17% амортизации и 15%
-                        энергоотдачи, по сравнению с предыдущей моделью.
-                    </p>
-                    <p>
-                        Эффективное сотрудничество с Pebax Power позволило обновить пластину Wave, сделав ее еще более
-                        устойчивой. Вставки из резины с повышенным содержанием углерода значительно повышают
-                        износоустойчивость подметки. Wave Rider 24 – прекрасный вариант комфортных
-                        высокопроизводительных кроссовок для бега по асфальту.
-                    </p>
-                    <p>Подходят нейтральным пронаторам.</p>
-                    <p>
-                        Очередное воплощение культовой модели Wave Rider вышло с новациями в области верха и средней
-                        части подошвы. Примененная технология Mizuno Enerzy дает в плюсе 17% амортизации и 15%
-                        энергоотдачи, по сравнению с предыдущей моделью.
-                    </p>
-                    <p>
-                        Эффективное сотрудничество с Pebax Power позволило обновить пластину Wave, сделав ее еще более
-                        устойчивой. Вставки из резины с повышенным содержанием углерода значительно повышают
-                        износоустойчивость подметки. Wave Rider 24 – прекрасный вариант комфортных
-                        высокопроизводительных кроссовок для бега по асфальту.
-                    </p>
-                    <p>Подходят нейтральным пронаторам.</p>
-                </div>
+                <div className="product-addition-info__text">{item.description}</div>
                 <div className="product-addition-info__advantages">
                     <div className="advantages-item">
                         <div className="advantages-item__icon">

@@ -16,7 +16,17 @@
     &__item {
         height: 100px;
         margin: 0 30px;
-
+        &_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90px;
+            height: 90px;
+            img {
+                max-width: 90px;
+                max-height: 90px;
+            }
+        }
         &:last-child {
             border: none;
         }

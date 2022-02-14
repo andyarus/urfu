@@ -1,0 +1,25 @@
+.search-block {
+    display: flex;
+    position: relative;
+}
+.search {
+    color: #8c8c8f;
+    display: flex;
+    padding: 10px 15px;
+    padding-right: 35px;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #f3f1fa;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 360px;
+    height: 40px;
+    &__icon {
+        position: absolute;
+        cursor: pointer;
+        top: 5px;
+        left: 387px;
+        padding: 5px;
+    }
+}

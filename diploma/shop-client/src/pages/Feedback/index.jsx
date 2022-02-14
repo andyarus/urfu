@@ -1,20 +1,26 @@
 import React from "react";
-import Product from "../Product";
+
+import { useDispatch } from "react-redux";
+
+import userActions from "../../redux/actions/user";
+
 import Button from "../../components/Button";
 
 import "./Feedback.scss";
 
 function Feedback() {
+    const dispatch = useDispatch();
     const onSend = () => {
         console.log("Отправить");
+        dispatch(userActions.setFormStatus(false));
     };
     const onСancel = () => {
         console.log("Я передумал");
+        dispatch(userActions.setFormStatus(false));
     };
     return (
         <>
-            <div className="overlay"></div>
-            <div className="page-form">
+            <div className="page-form page-form_feetback">
                 <div className="page-form__title">Задать вопрос </div>
                 <div className="page-form__form form">
                     <div className="form__title">Добро пожаловать на самый лучший спортивный магазин</div>
@@ -40,12 +46,11 @@ function Feedback() {
                     </div>
                     <div className="form__text">Настоящим подтверждаю, что я ознакомлен и согласен с условиями</div>
                     <div className="form__actions">
-                        <div className="form__send">Отправить</div>
-                        <div className="form__cansel">Я передумал</div>
+                        <div className="form__send" onClick={onSend}>Отправить</div>
+                        <div className="form__cansel" onClick={onСancel}>Я передумал</div>
                     </div>
                 </div>
             </div>
-            <Product />;
         </>
     );
 }

@@ -1,22 +1,29 @@
-import React from "react";
-import Product from "../Product";
+import React, { useEffect } from "react";
+
+import { useDispatch } from "react-redux";
+
+import userActions from "../../redux/actions/user";
+
 import Button from "../../components/Button";
 
 import "./Login.scss";
 
 function Login() {
+    const dispatch = useDispatch();
+
     const onRecoverPass = () => {
         console.log("Забыли пароль?");
     };
     const onAuth = () => {
-        console.log("Авторизоваться");
+        dispatch(userActions.setUserLogin());
+        dispatch(userActions.setFormStatus(false));
     };
     const onRegistration = () => {
-        console.log("Регистрация");
+        dispatch(userActions.setFormStatus("register"));
     };
+
     return (
         <>
-            <div className="overlay"></div>
             <div className="page-form">
                 <div className="page-form__title">Авторизация </div>
                 <div className="page-form__form form">
@@ -29,14 +36,19 @@ function Login() {
                         <div className="input__title">Пароль</div>
                         <input type="text" />
                     </div>
-                    <div className="form__restore-password">Забыли пароль?</div>
+                    <div className="form__restore-password" onClick={onRecoverPass}>
+                        Забыли пароль?
+                    </div>
                     <div className="form__actions">
-                        <div className="form__auth">Авторизоваться</div>
-                        <div className="form__reg">регистрация</div>
+                        <div className="form__auth" onClick={onAuth}>
+                            Авторизоваться
+                        </div>
+                        <div className="form__reg" onClick={onRegistration}>
+                            регистрация
+                        </div>
                     </div>
                 </div>
             </div>
-            <Product />;
         </>
     );
 }

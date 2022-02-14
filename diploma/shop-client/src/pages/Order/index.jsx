@@ -10,13 +10,11 @@ import "./Order.scss"
 function Search() {
     return (
         <div>
-            <TopMenu />
             <BreadCrumbs />
-            <div class="order">
+            <div className="order">
                 <CartResultInfo />
                 <OrderCompletion />
             </div>
-            <Footer />
         </div>
     );
 }

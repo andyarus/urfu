@@ -1,19 +1,24 @@
 import React from "react";
-import Product from "../Product";
+
+import { useDispatch } from "react-redux";
+
+import userActions from "../../redux/actions/user";
+
 import Button from "../../components/Button";
 
-import './Registration.scss'
+import "./Registration.scss";
 
 function Registration() {
+    const dispatch = useDispatch();
     const onAuth = () => {
-        console.log("Авторизоваться");
+        dispatch(userActions.setFormStatus("login"));
     };
     const onRegistration = () => {
-        console.log("Регистрация");
+        dispatch(userActions.setUserLogin());
+        dispatch(userActions.setFormStatus(false));
     };
     return (
         <>
-            <div className="overlay"></div>
             <div className="page-form">
                 <div className="page-form__title">Регистрация </div>
                 <div className="page-form__form form">
@@ -36,12 +41,11 @@ function Registration() {
                     </div>
                     <div className="form__text">Настоящим подтверждаю, что я ознакомлен и согласен с условиями</div>
                     <div className="form__actions">
-                        <div className="form__reg">Зарегестрироваться</div>
-                        <div className="form__auth">Авторизоваться</div>
+                        <div className="form__reg"  onClick={onRegistration}>Зарегестрироваться</div>
+                        <div className="form__auth"  onClick={onAuth}>Авторизоваться</div>
                     </div>
                 </div>
             </div>
-            <Product />;
         </>
     );
 }

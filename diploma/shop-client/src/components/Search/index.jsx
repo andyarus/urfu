@@ -1,9 +1,41 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import productsActions from "../../redux/actions/products";
 
-import './Search.scss'
+import "./Search.scss";
 
-function Search() {
-  return <div>Search</div>;
+function Search({ searchInfo }) {
+    const dispatch = useDispatch();
+    return (
+        <div className="search-block">
+            <input
+                type="text"
+                placeholder="Поиск товаров"
+                className="panel__search search"
+                value={searchInfo && searchInfo.searchText}
+                onChange={(e) => {
+                    searchInfo.setSearchText(e.target.value);
+                }}
+            />
+            <Link
+                to="/search"
+                onClick={() => {
+                    dispatch(productsActions.setSearchText(searchInfo.searchText));
+                    searchInfo.setSearchText("")
+                }}
+            >
+                <div className="search__icon">
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M17.7539 15.8242L14.2383 12.3086C14.0742 12.1445 13.875 12.0625 13.6406 12.0625H13.0781C14.1094 10.75 14.625 9.25 14.625 7.5625C14.625 6.22656 14.2969 5.00781 13.6406 3.90625C12.9844 2.78125 12.0938 1.89063 10.9688 1.23438C9.86719 0.578125 8.64844 0.25 7.3125 0.25C5.97656 0.25 4.74609 0.578125 3.62109 1.23438C2.51953 1.89063 1.64062 2.78125 0.984375 3.90625C0.328125 5.00781 0 6.22656 0 7.5625C0 8.89844 0.328125 10.1289 0.984375 11.2539C1.64062 12.3555 2.51953 13.2344 3.62109 13.8906C4.74609 14.5469 5.97656 14.875 7.3125 14.875C9 14.875 10.5 14.3594 11.8125 13.3281V13.8906C11.8125 14.125 11.8945 14.3242 12.0586 14.4883L15.5742 18.0039C15.7383 18.168 15.9375 18.25 16.1719 18.25C16.4062 18.25 16.6055 18.168 16.7695 18.0039L17.7539 17.0195C17.918 16.8555 18 16.6562 18 16.4219C18 16.1875 17.918 15.9883 17.7539 15.8242ZM7.3125 12.0625C6.49219 12.0625 5.73047 11.8633 5.02734 11.4648C4.34766 11.0664 3.80859 10.5273 3.41016 9.84766C3.01172 9.14453 2.8125 8.38281 2.8125 7.5625C2.8125 6.74219 3.01172 5.99219 3.41016 5.3125C3.80859 4.60938 4.34766 4.05859 5.02734 3.66016C5.73047 3.26172 6.49219 3.0625 7.3125 3.0625C8.13281 3.0625 8.88281 3.26172 9.5625 3.66016C10.2656 4.05859 10.8164 4.60938 11.2148 5.3125C11.6133 5.99219 11.8125 6.74219 11.8125 7.5625C11.8125 8.38281 11.6133 9.14453 11.2148 9.84766C10.8164 10.5273 10.2656 11.0664 9.5625 11.4648C8.88281 11.8633 8.13281 12.0625 7.3125 12.0625Z"
+                            fill="#8C8C8F"
+                        />
+                    </svg>
+                </div>
+            </Link>
+        </div>
+    );
 }
 
 export default Search;

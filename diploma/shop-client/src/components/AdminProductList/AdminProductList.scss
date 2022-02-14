@@ -19,6 +19,7 @@
     }
 
     &__add-item {
+        text-decoration: none;
         width: 174px;
         height: 40px;
         background: #1a191f;
@@ -35,19 +36,32 @@
 }
 
 .admin-list-item {
+    
     padding: 23px 0;
     display: flex;
-    width: 100%;
+    
     border-top: 1px solid #f3f1fa;
+    &__without-delete {
+        text-decoration: none;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
     &:last-child {
         border: none;
     }
-    justify-content: space-between;
+    
     &__logo {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-right: 16px;
+        width: 80px;
+        height: 80px;
+        img {
+            max-width: 80px;
+            max-height: 80px;
+        }
     }
     &__info {
         width: 770px;
@@ -139,6 +153,7 @@
         }
     }
     &__delete {
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;

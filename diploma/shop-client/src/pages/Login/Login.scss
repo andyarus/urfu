@@ -12,11 +12,7 @@
     position: absolute;
     top: 15%;
     left: calc(50% - 310px);
-    &__restore-password {
-        font-size: 14px;
-
-        color: #8c8c8f;
-    }
+    
     z-index: 2;
     &__title {
         font-weight: bold;
@@ -31,7 +27,12 @@
         background: #ffffff;
         box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
-
+        &__restore-password {
+            cursor: pointer;
+            font-size: 14px;
+            display: inline-flex;
+            color: #8c8c8f;
+        }
         &__title {
             font-size: 26px;
             color: #1a191f;
