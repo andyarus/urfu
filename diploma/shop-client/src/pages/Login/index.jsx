@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import userActions from "../../redux/actions/user";
@@ -41,15 +41,21 @@ function Login() {
                     </div>
                     <div className="form__input form__input_password input">
                         <div className="input__title">Пароль</div>
-                        <input type="text" />
+                        <input type="password" />
                     </div>
                     <div className="form__restore-password" onClick={onRecoverPass}>
                         Забыли пароль?
                     </div>
                     <div className="form__actions">
-                        <div className="form__auth" onClick={onAuth}>
-                            Авторизоваться
-                        </div>
+                        {email !== "admin" ? (
+                            <div className="form__auth" onClick={onAuth}>
+                                Авторизоваться
+                            </div>
+                        ) : (
+                            <Link to="/AdminList" className="form__auth" onClick={onAuth}>
+                                Авторизоваться
+                            </Link>
+                        )}
                         <div className="form__reg" onClick={onRegistration}>
                             регистрация
                         </div>

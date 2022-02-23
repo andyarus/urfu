@@ -14,7 +14,6 @@ function OrderCompletion() {
         dispatch(userActions.setFormStatus("login"));
     };
     const onPay = () => {
-        console.log(cartActions.deleteItems());
         dispatch(cartActions.deleteItems());
     };
     return (

@@ -6,10 +6,10 @@ import Button from "../Button";
 
 function FullFilterSettings({ priceInfo, sizeInfo, brandInfo, onSetFilter, clearFilter }) {
     const onSubmit = () => {
-        console.log("onSubmit");
+        
     };
     const onReset = () => {
-        console.log("onReset");
+        
     };
     return (
         <div className="categories__full-filter-settings full-filter-settings">

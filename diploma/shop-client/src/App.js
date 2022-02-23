@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Main from "./pages/Main";
 import Layout from "./pages/Layout";
@@ -14,6 +15,11 @@ import AdminList from "./pages/AdminList";
 
 function App() {
     const [searchText, setSearchText] = useState("");
+    const isAdmin = useSelector(({ user }) => {
+        return user.isAdmin;
+    });
+
+    
     return (
         <BrowserRouter>
             <Layout searchInfo={{ searchText, setSearchText }}>

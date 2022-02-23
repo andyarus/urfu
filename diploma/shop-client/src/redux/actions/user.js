@@ -3,6 +3,7 @@ const userActions = {
         type: "USER:LOGIN",
         payload: userInfo,
     }),
+    
     setUserLogout: () => ({
         type: "USER:LOGOUT",
     }),
@@ -13,3 +14,4 @@ const userActions = {
 };
 
 export default userActions;
+

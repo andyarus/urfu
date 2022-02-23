@@ -22,12 +22,10 @@ function ProductsItem({ item }) {
     const [pageContentType, setPageContentType] = useState("description");
     const [activeSize, setActiveSize] = useState();
     const toggleAdditionalInformation = (type) => {
-        console.log(`toggleAdditionalInformation ${type}`);
     };
     const dispatch = useDispatch();
 
     const addToCart = () => {
-        console.log("addToCart");
         dispatch(cartActions.setChangeItems({ count: 1, id: item.id }));
     };
     const priceNow = Math.round(item.price - (item.price * item.discount) / 100);

@@ -38,7 +38,6 @@ function Layout({ children, searchInfo }) {
     const formStatus = useSelector(({ user }) => {
         return user.formStatus;
     });
-    console.log("formStatus", formStatus);
     return (
         <>
             {openForm(formStatus)}

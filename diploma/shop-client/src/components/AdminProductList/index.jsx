@@ -8,7 +8,7 @@ import "./AdminProductList.scss";
 
 function AdminProductList() {
     const onAdd = () => {
-        console.log("Добавить товар");
+        
     };
 
     const products = useSelector(({ products }) => {

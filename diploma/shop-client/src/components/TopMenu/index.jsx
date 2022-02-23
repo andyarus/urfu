@@ -129,13 +129,10 @@ function TopMenu({ searchInfo }) {
                 <div className="top-menu__navigation navigation">
                     <div className="navigation__items">
                         <div className="navigation__item navigation__item_sale">SALE</div>
-                        <div className="navigation__item">Мужчинам</div>
-                        <div className="navigation__item">Женщинам</div>
-                        <div className="navigation__item">Детям</div>
-                        <div className="navigation__item">Одежда</div>
-                        <Link to="/Category" className="navigation__item">
-                            Категории
-                        </Link>
+                        <Link to="/Category" className="navigation__item">Мужчинам</Link>
+                        <Link to="/Category" className="navigation__item">Женщинам</Link>
+                        <Link to="/Category" className="navigation__item">Детям</Link>
+                        <Link to="/Category" className="navigation__item">Одежда</Link>
                         {isAdmin && (
                             <Link to="/AdminList" className="navigation__item">
                                 Администрирование
