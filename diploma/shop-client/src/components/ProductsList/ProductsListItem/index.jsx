@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -16,16 +17,29 @@ function ProductsItem({ item }) {
         <div className="products-list__product-item product-item">
             <div className="product-item__container">
                 <Link to={`/Product/${item.id}`} className="product-item__logo">
-                    <img src={item.image_url} alt="" />
+                    <img src={item.image_url[0]} alt="" />
                 </Link>
-                <div className="product-item__discount-info">-{item.discount} %</div>
+                <div
+                    className={cn("product-item__discount-info", {
+                        "product-item__discount-info_hide": item.discount === 0 || item.discount === "",
+                    })}
+                >
+                    -{item.discount} %
+                </div>
                 <div className="product-item__name">{item.name}</div>
                 <div className="product-item__sale-info">
                     <div className="product-item__price">
                         <div className="product-item__price_now">
                             {Math.round(item.price - (item.price * item.discount) / 100)} руб
                         </div>
-                        <div className="product-item__price_without-discount">{item.price} ₽</div>
+                        <div
+                            className={cn("product-item__price_without-discount", {
+                                "product-item__price_without-discount_hide":
+                                    item.discount === 0 || item.discount === "",
+                            })}
+                        >
+                            {item.price} ₽
+                        </div>
                     </div>
                     <div className="product-item__add-to-cart" onClick={addToCart}>
                         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -71,6 +71,9 @@
             }
             &_discount {
                 display: flex;
+                &_hide {
+                    visibility: hidden;
+                }
             }
             &_without-discount {
                 text-decoration-line: line-through;
@@ -217,8 +220,8 @@
             margin-bottom: 30px;
             color: #ffffff;
             &_disabled {
-                background: #F3F1FA;
-                color: #8C8C8F;
+                background: #f3f1fa;
+                color: #8c8c8f;
                 cursor: no-drop;
                 pointer-events: none;
             }

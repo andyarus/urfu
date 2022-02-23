@@ -1,6 +1,7 @@
 const userActions = {
-    setUserLogin: () => ({
+    setUserLogin: (userInfo) => ({
         type: "USER:LOGIN",
+        payload: userInfo,
     }),
     setUserLogout: () => ({
         type: "USER:LOGOUT",

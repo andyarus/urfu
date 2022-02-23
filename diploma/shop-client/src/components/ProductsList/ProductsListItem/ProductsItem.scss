@@ -21,6 +21,9 @@
         }
     }
     &__discount-info {
+        &_hide {
+            visibility: hidden;
+        }
         display: flex;
         justify-content: center;
         align-items: center;
@@ -60,6 +63,9 @@
         font-weight: 700;
     }
     &__price_without-discount {
+        &_hide {
+            visibility: hidden;
+        }
         font-size: 14px;
         font-weight: 400;
         text-decoration: line-through;

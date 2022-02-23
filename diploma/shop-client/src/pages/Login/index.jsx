@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
 
@@ -9,13 +9,14 @@ import Button from "../../components/Button";
 import "./Login.scss";
 
 function Login() {
+    const [email, setEmail] = useState("");
     const dispatch = useDispatch();
 
     const onRecoverPass = () => {
         console.log("Забыли пароль?");
     };
     const onAuth = () => {
-        dispatch(userActions.setUserLogin());
+        dispatch(userActions.setUserLogin({ email }));
         dispatch(userActions.setFormStatus(false));
     };
     const onRegistration = () => {
@@ -30,7 +31,13 @@ function Login() {
                     <div className="form__title">Добро пожаловать на самый лучший спортивный магазин</div>
                     <div className="form__input form__input_email input">
                         <div className="input__title">Почта</div>
-                        <input type="text" />
+                        <input
+                            type="text"
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                        />
                     </div>
                     <div className="form__input form__input_password input">
                         <div className="input__title">Пароль</div>

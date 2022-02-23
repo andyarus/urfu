@@ -17,11 +17,11 @@ function AdminProductList({ item }) {
         <div className="admin-list__admin-list-item admin-list-item">
             <Link  to={`/AdminListItem/${item.id}`}  className="admin-list-item__without-delete">
                 <div className="admin-list-item__logo">
-                    <img src={item.image_url} alt="" />
+                    <img src={item.image_url[0]} alt="" />
                 </div>
                 <div className="admin-list-item__info">
                     <div className="admin-list-item__info_title">{item.name}</div>
-                    <div className="admin-list-item__info_article">Артикул J1GC2003 17</div>
+                    <div className="admin-list-item__info_article">Артикул {item.article}</div>
                     <div className="admin-list-item__info_size">Размер - 10.5</div>
                 </div>
                 <div className="admin-list-item__price">

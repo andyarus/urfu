@@ -6,7 +6,7 @@ function OrderResultItem({ item, count }) {
     return (
         <div className="order-result__item">
             <div className="order-result__item_img">
-                <img src={item.image_url} alt="" />
+                <img src={item.image_url[0]} alt="" />
             </div>
             <div className="order-result__item_description">{item.name}</div>
             <div className="order-result__item_details">

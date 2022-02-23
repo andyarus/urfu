@@ -1,5 +1,6 @@
 const initialState = {
-    isAuth: true,
+    isAuth: false,
+    isAdmin: false,
     formStatus: false,
 };
 
@@ -8,17 +9,19 @@ export default (state = initialState, action) => {
         case "USER:LOGIN":
             return {
                 ...state,
+                isAdmin: action.payload.email === "admin",
                 isAuth: true,
             };
         case "USER:LOGOUT":
             return {
                 ...state,
+                isAdmin: false,
                 isAuth: false,
             };
         case "SET_FORM_STATUS":
             return {
                 ...state,
-                formStatus: action.payload
+                formStatus: action.payload,
             };
 
         default:

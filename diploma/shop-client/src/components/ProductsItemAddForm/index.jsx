@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import cn from "classnames";
+import ImageUploading from "react-images-uploading";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -18,14 +20,22 @@ import preview4 from "../../assets/preview4.png";
 import "./ProductsItemAddForm.scss";
 
 function ProductsItemAddForm() {
+    const [images, setImages] = useState([]);
     const dispatch = useDispatch();
     const [productName, setproductName] = useState("");
     const [article, setArticle] = useState("");
     const [brand, setBrand] = useState("");
     const [description, setDescription] = useState("");
-    const [discount, setDiscount] = useState("");
+    const [discount, setDiscount] = useState(0);
     const [price, setPrice] = useState("");
     const [size, setSize] = useState([]);
+    const maxNumber = 69;
+
+    const onChange = (imageList, addUpdateIndex) => {
+        // data for submit
+        console.log(imageList, addUpdateIndex);
+        setImages(imageList);
+    };
 
     const setActiveSize = (number) => {
         const tmpSize = size.filter((item) => item !== number);
@@ -43,7 +53,7 @@ function ProductsItemAddForm() {
                 size: size,
                 name: productName,
                 description: description,
-
+                image_url: images.map(item => item.data_url),
                 price: price,
                 discount: discount,
             })
@@ -95,37 +105,53 @@ function ProductsItemAddForm() {
                         }}
                     ></textarea>
                 </div>
-                <div className="admin-item-settings__admin-item-photos admin-item-photos">
-                    <div className="admin-item-photos__title">Фотографии</div>
-                    <div className="admin-item-photos__list">
-                        <div className="admin-item-photos__item">
-                            <img src={preview1} alt="" />
-                        </div>
-                        <div className="admin-item-photos__item">
-                            <img src={preview2} alt="" />
-                        </div>
-                        <div className="admin-item-photos__item">
-                            <img src={preview3} alt="" />
-                        </div>
-                        <div className="admin-item-photos__item">
-                            <img src={preview4} alt="" />
-                        </div>
-                        <div className="admin-item-photos__item admin-item-photos__item_add">
-                            <svg
-                                width="21"
-                                height="22"
-                                viewBox="0 0 21 22"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M18.75 0.5H2.25C1.625 0.5 1.09375 0.71875 0.65625 1.15625C0.21875 1.59375 0 2.125 0 2.75V19.25C0 19.875 0.21875 20.4062 0.65625 20.8438C1.09375 21.2812 1.625 21.5 2.25 21.5H18.75C19.375 21.5 19.9062 21.2812 20.3438 20.8438C20.7812 20.4062 21 19.875 21 19.25V2.75C21 2.125 20.7812 1.59375 20.3438 1.15625C19.9062 0.71875 19.375 0.5 18.75 0.5ZM17.25 12.3125C17.25 12.4688 17.1875 12.6094 17.0625 12.7344C16.9688 12.8281 16.8438 12.875 16.6875 12.875H12.375V17.1875C12.375 17.3438 12.3125 17.4844 12.1875 17.6094C12.0938 17.7031 11.9688 17.75 11.8125 17.75H9.1875C9.03125 17.75 8.89062 17.7031 8.76562 17.6094C8.67188 17.4844 8.625 17.3438 8.625 17.1875V12.875H4.3125C4.15625 12.875 4.01562 12.8281 3.89062 12.7344C3.79688 12.6094 3.75 12.4688 3.75 12.3125V9.6875C3.75 9.53125 3.79688 9.40625 3.89062 9.3125C4.01562 9.1875 4.15625 9.125 4.3125 9.125H8.625V4.8125C8.625 4.65625 8.67188 4.53125 8.76562 4.4375C8.89062 4.3125 9.03125 4.25 9.1875 4.25H11.8125C11.9688 4.25 12.0938 4.3125 12.1875 4.4375C12.3125 4.53125 12.375 4.65625 12.375 4.8125V9.125H16.6875C16.8438 9.125 16.9688 9.1875 17.0625 9.3125C17.1875 9.40625 17.25 9.53125 17.25 9.6875V12.3125Z"
-                                    fill="#5D43E1"
-                                />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+
+                <ImageUploading multiple value={images} onChange={onChange} maxNumber={maxNumber} dataURLKey="data_url">
+                    {({
+                        imageList,
+                        onImageUpload,
+                        onImageRemoveAll,
+                        onImageUpdate,
+                        onImageRemove,
+                        isDragging,
+                        dragProps,
+                    }) => {
+                        console.log("isDragging", isDragging);
+                        return (
+                            <div className="admin-item-settings__admin-item-photos admin-item-photos" {...dragProps}>
+                                <div className="admin-item-photos__title">Фотографии</div>
+                                <div className="admin-item-photos__list">
+                                    {imageList.map((image, index) => {
+                                        return (
+                                            <div className="admin-item-photos__item" key={index}>
+                                                <img src={image.data_url} alt="" />
+                                            </div>
+                                        );
+                                    })}
+
+                                    <div
+                                        className="admin-item-photos__item admin-item-photos__item_add"
+                                        onClick={onImageUpload}
+                                    >
+                                        <svg
+                                            width="21"
+                                            height="22"
+                                            viewBox="0 0 21 22"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M18.75 0.5H2.25C1.625 0.5 1.09375 0.71875 0.65625 1.15625C0.21875 1.59375 0 2.125 0 2.75V19.25C0 19.875 0.21875 20.4062 0.65625 20.8438C1.09375 21.2812 1.625 21.5 2.25 21.5H18.75C19.375 21.5 19.9062 21.2812 20.3438 20.8438C20.7812 20.4062 21 19.875 21 19.25V2.75C21 2.125 20.7812 1.59375 20.3438 1.15625C19.9062 0.71875 19.375 0.5 18.75 0.5ZM17.25 12.3125C17.25 12.4688 17.1875 12.6094 17.0625 12.7344C16.9688 12.8281 16.8438 12.875 16.6875 12.875H12.375V17.1875C12.375 17.3438 12.3125 17.4844 12.1875 17.6094C12.0938 17.7031 11.9688 17.75 11.8125 17.75H9.1875C9.03125 17.75 8.89062 17.7031 8.76562 17.6094C8.67188 17.4844 8.625 17.3438 8.625 17.1875V12.875H4.3125C4.15625 12.875 4.01562 12.8281 3.89062 12.7344C3.79688 12.6094 3.75 12.4688 3.75 12.3125V9.6875C3.75 9.53125 3.79688 9.40625 3.89062 9.3125C4.01562 9.1875 4.15625 9.125 4.3125 9.125H8.625V4.8125C8.625 4.65625 8.67188 4.53125 8.76562 4.4375C8.89062 4.3125 9.03125 4.25 9.1875 4.25H11.8125C11.9688 4.25 12.0938 4.3125 12.1875 4.4375C12.3125 4.53125 12.375 4.65625 12.375 4.8125V9.125H16.6875C16.8438 9.125 16.9688 9.1875 17.0625 9.3125C17.1875 9.40625 17.25 9.53125 17.25 9.6875V12.3125Z"
+                                                fill="#5D43E1"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }}
+                </ImageUploading>
+
                 {/* <div className="admin-item-settings__price-title">Стоимость</div>
                 <div className="admin-item-settings__input admin-item-settings__input_now-price input">
                     <div className="input__title">Текущая цена</div>

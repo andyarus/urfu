@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import { numberWithSpaces } from "../../../api/product";
 import Button from "../../Button";
 
@@ -20,16 +21,20 @@ function ShopCartItem({ item, count }) {
         <div className="cart-info__cart-item cart-item">
             <div className="cart-item__logo">
                 {/* <img src={preview1} alt="" /> */}
-                <img src={item.image_url} alt="" />
+                <img src={item.image_url[0]} alt="" />
             </div>
             <div className="cart-item__info">
                 <div className="cart-item__info_title">{item.name}</div>
-                <div className="cart-item__info_article">Артикул J1GC2003 17</div>
+                <div className="cart-item__info_article">Артикул {item.article}</div>
                 <div className="cart-item__info_size">Размер - 10.5</div>
             </div>
             <div className="cart-item__price">
                 <div className="cart-item__price_now">{numberWithSpaces(priceNow)}</div>
-                <div className="cart-item__price_discount">
+                <div
+                    className={cn("cart-item__price_discount", {
+                        "cart-item__price_discount_hide": item.discount === 0 || item.discount === "",
+                    })}
+                >
                     <div className="cart-item__price_without-discount">{numberWithSpaces(item.price)} ₽</div>
                     <div className="cart-item__price_discount-persent">- {item.discount}%</div>
                 </div>
